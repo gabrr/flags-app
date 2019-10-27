@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from "./components/navbar/index";
+import Wrapper from "./components/wrapper/index";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <Wrapper />
 
     </div>
   );
