@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap');
-div{
+body{
     font-family: 'Nunito Sans', sans-serif;
 }
 #navbar{
     width: 100%;
     height: 55px;
-    background-color: #333;
-    color: #fff;
 }
 
 ul{
@@ -18,12 +16,15 @@ ul{
 }
 ul li{
     display: inline-block;
+    padding: 12px 20px;
 }
 .title{
     float: left;
-    font-weight: 600;
+    font-weight: 800;
+    font-size: 118%;
 }
 .light-toggle{
     float: right;
     font-weight: 600;
+    cursor: pointer;
 }

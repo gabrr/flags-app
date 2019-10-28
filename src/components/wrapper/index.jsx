@@ -16,6 +16,7 @@ class Wrapper extends Component {
         return (
             <div id="wrapper" className={this.state.theme}>
                 <Navbar theming={this.theming} />
+                <p>hey there </p>
             </div>
         );
     }

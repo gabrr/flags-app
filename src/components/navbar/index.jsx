@@ -11,12 +11,12 @@ class Navbar extends Component {
             <div id="navbar">
                 <ul>
                     <li className="title">Where in the world?</li>
-                    <li className="light-toggle">Night Mode</li>
-                    <button onClick={this.props.theming}>Turn on</button>
+                    <li onClick={this.props.theming} className="light-toggle">Night Mode</li>
                 </ul>
             </div>
         );
     }
 }
+
 
 export default Navbar;
