@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar/index"
 import "./style.css";
+import { useSelector } from "react-redux";
+
+const courses = useSelector(state => state.data);
 
 class Wrapper extends Component {
     constructor(props) {
@@ -12,11 +15,14 @@ class Wrapper extends Component {
         this.theming = this.theming.bind(this);
     }
 
+    
+
     render() {
         return (
             <div id="wrapper" className={this.state.theme}>
                 <Navbar theming={this.theming} />
                 <p>hey there </p>
+                {courses.map(x => <p key={x}>{x}</p>)}
             </div>
         );
     }
@@ -33,7 +39,10 @@ class Wrapper extends Component {
         }
     }
 
+    console.log()
+
 }
+
 
 export default Wrapper;
 
