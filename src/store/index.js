@@ -7,10 +7,10 @@ const INITIAL_STATE = {
     ],
 };
 
-const courses = (state = INITIAL_STATE, action) => {
+function courses(state = INITIAL_STATE, action) {
     switch(action.type) {
-        case "add_user":
-            return state = {...state};
+        case 'ADD_COURSE':
+            return {data: [...state]};
         default:
             return state;
     }
@@ -18,4 +18,4 @@ const courses = (state = INITIAL_STATE, action) => {
 
 const store = createStore(courses);
 
-export default courses;
+export default store;

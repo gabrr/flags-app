@@ -8,7 +8,6 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <Wrapper />
-
       </div>
     </Provider>
   );
