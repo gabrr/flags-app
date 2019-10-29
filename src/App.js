@@ -1,12 +1,15 @@
 import React from 'react';
-import Navbar from "./components/navbar/index";
+import {Provider} from 'react-redux';
+import Wrapper from "./components/wrapper/index";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Wrapper />
+      </div>
+    </Provider>
   );
 }
 
