@@ -26,5 +26,6 @@ ul li{
 .light-toggle{
     float: right;
     font-weight: 600;
+    font-size: 96%;
     cursor: pointer;
 }
