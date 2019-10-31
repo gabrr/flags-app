@@ -1,15 +1,27 @@
+.outerInput{
+    width: 100%;
+    display: grid;
+    position: relative;
+    margin-top: 20px;
+    grid-template-columns: 5% 1fr;
+}
 .searchInput{
-    height: 50px;
-    font-size: 16px;
-    width: 90vw;
-    padding-left: 4vw;
-    margin-left: 2.4vw;
-    margin-top: 24px;
+    width: calc(95% - 55px);
+    padding-left: 55px;
+    height: 40px;
+    font-size: 14px;
+    grid-column-start: 2;
     box-shadow: 0 0 19px -14px #777;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
 }
-
 .searchInput:focus{
     outline: none;
+}
+.searchIcon{
+    width: 14px;
+    margin-left: 100%;
+    transform: translateX(24px);
+    padding-top: 13px;
+    z-index: 1;
 }
