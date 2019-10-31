@@ -1,21 +1,21 @@
 import { createStore } from "redux";
 
 const INITIAL_STATE = {
-    data: [
-        'react js',
-        'patter design'
-    ],
+    theming: "light-theme"
 };
 
-function courses(state = INITIAL_STATE, action) {
-    switch(action.type) {
-        case 'ADD_COURSE':
-            return {data: [...state]};
-        default:
-            return state;
+
+function themeReducer(state = INITIAL_STATE, action) {
+    if(action.type === "THEME_MODE" && state.theming === "light-theme") {
+        return {
+            theming: "dark-theme"
+        }
+    } 
+    return  {
+        theming: "light-theme"
     }
 }
 
-const store = createStore(courses);
+const store = createStore(themeReducer);
 
 export default store;

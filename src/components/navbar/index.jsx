@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
+import store from "../../store/index";
+
 
 class Navbar extends Component {
     constructor(props) {
@@ -11,7 +13,7 @@ class Navbar extends Component {
             <div id="navbar">
                 <ul>
                     <li className="title">Where in the world?</li>
-                    <li onClick={this.props.theming} className="light-toggle">Night Mode</li>
+                    <li onClick={this.props.setTheme} className="light-toggle">Night Mode</li>
                 </ul>
             </div>
         );
