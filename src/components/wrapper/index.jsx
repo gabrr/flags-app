@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Navbar from "../navbar/index"
+import Navbar from "../navbar";
+import SearchInput from "../searchInput";
 import "./style.css";
-import store from "../../store/index";
+import store from "../../store";
 
 
 class Wrapper extends Component {
     constructor(props) {
         super(props);        
         this.state = {
-            theming: ""
+            theming: "light-theme"
         }
         this.setTheme = this.setTheme.bind(this);
     }
@@ -23,7 +24,7 @@ class Wrapper extends Component {
         return (
             <div id="wrapper" className={this.state.theming}>
                 <Navbar setTheme={this.setTheme} />
-                <p>hey there </p>
+                <SearchInput />
             </div>
         );
     }
