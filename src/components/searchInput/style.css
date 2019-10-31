@@ -1,13 +1,13 @@
 .light-theme{
     background-color: hsl(0, 0%, 98%);
     color: hsl(200, 15%, 8%);
-    box-shadow: 0 0 10px -6px #777;
+    box-shadow: 0 0 6px -2px #777;
 }
 
 .dark-theme{
     background-color: hsl(207, 26%, 17%);
     color: hsl(0, 0%, 100%);
-    box-shadow: 0 0 10px -6px #000;
+    box-shadow: 0 0 6px -2px #000;
 }
 
 .outerInput{
