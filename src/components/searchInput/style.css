@@ -1,3 +1,15 @@
+.light-theme{
+    background-color: hsl(0, 0%, 98%);
+    color: hsl(200, 15%, 8%);
+    box-shadow: 0 0 10px -6px #777;
+}
+
+.dark-theme{
+    background-color: hsl(207, 26%, 17%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0 0 10px -6px #000;
+}
+
 .outerInput{
     width: 100%;
     display: grid;
@@ -11,9 +23,8 @@
     height: 40px;
     font-size: 14px;
     grid-column-start: 2;
-    box-shadow: 0 0 19px -14px #777;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 .searchInput:focus{
     outline: none;
