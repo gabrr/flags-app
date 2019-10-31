@@ -32,8 +32,6 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(store.getState())
-
         return (
             <div id="navbar" style={this.navbarBackground()}>
                 <ul>
