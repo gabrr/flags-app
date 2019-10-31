@@ -25,13 +25,15 @@ class Navbar extends Component {
 
     navbarBackground() {
         if(store.getState().theming === "light-theme") {
-            return {backgroundColor: store.getState().lightTheme.background}
+            return {backgroundColor: store.getState().lightTheme.elements}
         } else {
-            return {backgroundColor: store.getState().darkTheme.background}
+            return {backgroundColor: store.getState().darkTheme.elements}
         }
     }
 
     render() {
+        console.log(store.getState())
+
         return (
             <div id="navbar" style={this.navbarBackground()}>
                 <ul>
