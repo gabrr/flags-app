@@ -1,5 +1,5 @@
 .light-theme{
-    background-color: hsl(0, 0%, 98%);
+    background-color: #fff !important;
     color: hsl(200, 15%, 8%);
     box-shadow: 0 0 6px -2px #777;
 }

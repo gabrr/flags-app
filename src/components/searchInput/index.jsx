@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
+import DataFetcher from '../dataFetcher';
 
 class SearchInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
             inputValue: "",
-            countrySearched: "",
             theme: "light-theme"
         }
         this.changeHandler = this.changeHandler.bind(this);
@@ -22,14 +22,13 @@ class SearchInput extends Component {
         })
     }
 
-    submitting(e) {
-        if(e.key === "Enter") {
-            this.setState({
-                countrySearched: this.state.inputValue
-            })
-        } 
+    submitting(event) {
+        this.setState({
+            countrySearched: this.state.inputValue
+        });
+        event.preventDefault();
     }
-
+    
     theming() {
         if(store.getState().theming === "light-theme"){
             return "light-theme"
@@ -38,20 +37,15 @@ class SearchInput extends Component {
         }
     }
 
-    // navbarBackground() {
-    //     if(store.getState().theming === ) {
-    //         return {backgroundColor: store.getState().lightTheme.elements}
-    //     } else {
-    //         return {backgroundColor: store.getState().darkTheme.elements}
-    //     }
-    // }
-
     render() {
         return (
-            <div className={"outerInput"}>
-                <img className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
-                <input onKeyPress={this.submitting} onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
-            </div>
+            <form onSubmit={this.submitting}>
+                    <div className={"outerInput"}>
+                        <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
+                        <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
+                    </div>
+                    <DataFetcher query={this.state.inputValue} />
+            </form>    
         )
     }
 }
