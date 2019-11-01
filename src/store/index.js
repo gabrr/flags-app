@@ -18,10 +18,18 @@ const INITIAL_STATE = {
 
 
 function themeReducer(state = INITIAL_STATE, action) {
-    if(action.type === "THEME_MODE" && state.theming === "light-theme") {
-        return {...state, theming: "dark-theme"};
-    } 
-    return  {...state, theming: "light-theme"};
+    switch(action.type) {
+        case "THEME_MODE":
+            if(state.theming === "light-theme") {
+                return {...state, theming: "dark-theme"};
+            } else {
+                return  {...state, theming: "light-theme"};
+            }
+        case "COUNTRY_SEARCHED":
+            return  {...state, countrySearched: action.searched};
+        default:
+            return state;
+    }
 
 }
 
