@@ -1,0 +1,21 @@
+.cards{
+    display: grid;
+}
+
+.card{
+    width: 80%;
+    margin: 40px auto 0;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 20px 40px;
+}
+
+.flags{
+    width: 100%;
+    height: auto;
+}
+
+.country-name{
+    font-size: 16px;
+}

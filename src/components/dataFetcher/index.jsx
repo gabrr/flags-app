@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from "../../store"
+import "./style.css"
 
 class DataFetcher extends Component {
     state = {
@@ -35,14 +35,16 @@ class DataFetcher extends Component {
         
         render() {
             return (
-                this.state.countries.map( country => {
-                    return (
-                        <div className="cards">
-                            <h1>{country.name}</h1>
-                        </div>
-                    )
-                })
-                
+                <div className="cards">
+                    {this.state.countries.map( country => {
+                        return (
+                            <div className="card">
+                                <img className={"flags"} src={country.flag} alt={"flag"}></img>
+                                <h1 className={"country-name"}>{country.name}</h1>
+                            </div>
+                        )
+                    })}
+                </div>
         )
     }
 }
