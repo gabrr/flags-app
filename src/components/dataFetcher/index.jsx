@@ -6,45 +6,51 @@ class DataFetcher extends Component {
         error: null,
         isLoaded: false,
         countries: [],
-        query: "name/"
+        query: "all"
     }
 
-        
-    componentWillReceiveProps() {
-        this.setState({
-            query: `name/${this.props.query}`
-        });
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.query !== this.props.query) {
+    //         this.setState({
+    //             query: `name/${this.props.query}`
+    //         })
+    //     }
+    // }
+    // shouldComponentUpdate(prevProps) {
+    //     if(prevProps.query !== this.props.query) {
+    //         this.setState({
+    //             query: `name/${this.props.query}`
+    //         })
+    //     } 
+    //     return null
+    // }
 
-        fetch(`https://restcountries.eu/rest/v2/${this.state.query}`)
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({
-                isLoaded: true,
-                countries: result
-              });
-            },
-            (error) => {
-              this.setState({
-                isLoaded: true,
-                error
-              });
-            }
-          )
-    }
+
+    // componentDidMount() {
         
-        render() {
-            return (
-                <div className="cards">
-                    {this.state.countries.map( country => {
-                        return (
-                            <div className="card">
-                                <img className={"flags"} src={country.flag} alt={"flag"}></img>
-                                <h1 className={"country-name"}>{country.name}</h1>
-                            </div>
-                        )
-                    })}
-                </div>
+    // }   
+    // static getDerivedStateFromProps(props, state) {
+    //     if (props.query.inputValue !== "") {
+    //       return {
+    //         query: `name/${props.query.inputValue}`,
+    //       };
+    //     }
+    //     return null;
+    // }    
+
+    render() {
+        return (
+            <div className="cards">
+                {console.log(this.props.query)}
+                {this.props.query.countries.map( country => {
+                    return (
+                        <div className="card" key={Math.random() * 1.3}>
+                            <img className={"flags"} key={Math.random() * 1.3} src={country.flag} alt={"flag"}></img>
+                            <h1 className={"country-name"} key={Math.random() * 1.3}>{country.name}</h1>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 }
