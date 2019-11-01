@@ -32,7 +32,7 @@
 .searchIcon{
     width: 14px;
     margin-left: 100%;
-    transform: translateX(24px);
-    padding-top: 13px;
+    transform: translateX(22px);
+    padding-top: 15px;
     z-index: 1;
 }
