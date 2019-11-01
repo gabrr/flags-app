@@ -8,8 +8,11 @@ class SearchInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: "",
-            theme: "light-theme"
+            inputValue: "all",
+            theme: "light-theme",
+            countries: [],
+            isLoaded: false,
+            error: null
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
@@ -17,15 +20,35 @@ class SearchInput extends Component {
     }
 
     changeHandler(e) {
-        this.setState({
-            inputValue: e.target.value
-        })
+        if(e.target.value == "" && " ") {
+            this.setState({
+                inputValue: `all`
+            })    
+        } else {
+            this.setState({
+                inputValue: `name/${e.target.value}`
+            })
+        }
+        
     }
-
+    
     submitting(event) {
-        this.setState({
-            countrySearched: this.state.inputValue
-        });
+        fetch(`https://restcountries.eu/rest/v2/${this.state.inputValue}`)
+            .then(res => res.json())
+            .then(
+            (result) => {
+                this.setState({
+                isLoaded: true,
+                countries: result
+                });
+            },
+            (error) => {
+                this.setState({
+                isLoaded: true,
+                error
+                });
+            }
+        )
         event.preventDefault();
     }
     
@@ -44,7 +67,7 @@ class SearchInput extends Component {
                         <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
                         <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
                     </div>
-                    <DataFetcher query={this.state.inputValue} />
+                    <DataFetcher query={this.state} />
             </form>    
         )
     }
