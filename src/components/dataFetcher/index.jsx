@@ -28,15 +28,15 @@ class DataFetcher extends Component {
 
     // componentDidMount() {
         
-    // }   
-    // static getDerivedStateFromProps(props, state) {
-    //     if (props.query.inputValue !== "") {
-    //       return {
-    //         query: `name/${props.query.inputValue}`,
-    //       };
-    //     }
-    //     return null;
-    // }    
+    // // }   
+    // // static getDerivedStateFromProps(props, state) {
+    // //     if (props.query.inputValue !== "") {
+    // //       return {
+    // //         query: `name/${props.query.inputValue}`,
+    // //       };
+    // //     }
+    // //     return null;
+    // // }    
 
     render() {
         return (
