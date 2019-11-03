@@ -8,7 +8,7 @@ class SearchInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: "all",
+            inputValue: "region/oceania",
             theme: "light-theme",
             countries: [],
             isLoaded: false,
@@ -17,12 +17,13 @@ class SearchInput extends Component {
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.theming = this.theming.bind(this);
+        this.fethingData = this.fethingData.bind(this)
     }
 
     changeHandler(e) {
-        if(e.target.value == "" && " ") {
+        if(e.target.value === "") {
             this.setState({
-                inputValue: `all`
+                inputValue: `region/americas`
             })    
         } else {
             this.setState({
@@ -32,23 +33,40 @@ class SearchInput extends Component {
         
     }
     
-    submitting(event) {
+    
+    fethingData() {
         fetch(`https://restcountries.eu/rest/v2/${this.state.inputValue}`)
-            .then(res => res.json())
-            .then(
+        .then(res => res.json())
+        .then(
             (result) => {
-                this.setState({
-                isLoaded: true,
-                countries: result
-                });
+                // if(result.status !== 200) {
+                    this.setState({
+                        isLoaded: true,
+                        countries: result
+                    });    
+                // } else {
+                //     this.setState({
+                //         isLoaded: true,
+                //         countries: result
+                //     });    
+                // }
             },
             (error) => {
+                console.log(error)
                 this.setState({
-                isLoaded: true,
-                error
+                    isLoaded: true,
+                    error
                 });
             }
-        )
+            )
+        }
+        
+    componentDidMount() {
+        this.fethingData();
+    }
+
+    submitting(event) {
+        this.fethingData();
         event.preventDefault();
     }
     
