@@ -4,7 +4,6 @@ import SearchInput from "../searchInput";
 import "./style.css";
 import store from "../../store";
 
-
 class Wrapper extends Component {
     constructor(props) {
         super(props);        

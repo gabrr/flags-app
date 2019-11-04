@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
-import DataFetcher from '../dataFetcher';
+import CountryInCards from '../dataFetcher';
+import RegionFilter from "../regionFilter"
 
 class SearchInput extends Component {
     constructor(props) {
@@ -39,17 +40,17 @@ class SearchInput extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                // if(result.status !== 200) {
+                if(result.status) {
+                    this.setState({
+                        isLoaded: true,
+                        countries: [{name: `No country found, check your spelling and try again :)`}]
+                    });
+                } else {
                     this.setState({
                         isLoaded: true,
                         countries: result
                     });    
-                // } else {
-                //     this.setState({
-                //         isLoaded: true,
-                //         countries: result
-                //     });    
-                // }
+                }
             },
             (error) => {
                 console.log(error)
@@ -85,7 +86,8 @@ class SearchInput extends Component {
                         <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
                         <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
                     </div>
-                    <DataFetcher query={this.state} />
+                    <RegionFilter />
+                    <CountryInCards query={this.state} />
             </form>    
         )
     }
