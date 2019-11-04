@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
-import CountryInCards from '../dataFetcher';
+import CountryInCards from '../countryIncard';
 
 class SearchInput extends Component {
     constructor(props) {
