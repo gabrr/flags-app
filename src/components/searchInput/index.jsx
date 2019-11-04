@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
-import CountryInCards from '../dataFetcher';
-import RegionFilter from "../regionFilter"
+import CountryInCards from '../countryIncard';
 
 class SearchInput extends Component {
     constructor(props) {
@@ -53,7 +52,6 @@ class SearchInput extends Component {
                 }
             },
             (error) => {
-                console.log(error)
                 this.setState({
                     isLoaded: true,
                     error
@@ -86,7 +84,6 @@ class SearchInput extends Component {
                         <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
                         <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
                     </div>
-                    <RegionFilter />
                     <CountryInCards query={this.state} />
             </form>    
         )
