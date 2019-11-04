@@ -3,6 +3,7 @@ import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
 import CountryInCards from '../countryIncard';
+import RegionFilter from "../regionFilter";
 
 class SearchInput extends Component {
     constructor(props) {
@@ -12,12 +13,13 @@ class SearchInput extends Component {
             theme: "light-theme",
             countries: [],
             isLoaded: false,
-            error: null
+            error: null,
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.theming = this.theming.bind(this);
-        this.fethingData = this.fethingData.bind(this)
+        this.fethingData = this.fethingData.bind(this);
+        this.regionSetter = this.regionSetter.bind(this);
     }
 
     changeHandler(e) {
@@ -77,6 +79,12 @@ class SearchInput extends Component {
         }
     }
 
+    regionSetter(region) {
+        this.setState({
+            inputValue: `region/${region.target.innerHTML}`
+        })
+    }
+
     render() {
         return (
             <form onSubmit={this.submitting}>
@@ -84,6 +92,7 @@ class SearchInput extends Component {
                         <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
                         <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
                     </div>
+                    <RegionFilter state={this.state} region={this.regionSetter} />
                     <CountryInCards query={this.state} />
             </form>    
         )
