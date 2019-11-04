@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import searchIcon from '../../img/svg/search.svg';
-import store from "../../store";
 import "./style.css";
-import CountryInCards from '../countryIncard';
+import store from "../../store";
+// import { addindCountryAction } from '../../actions';
 
 class SearchInput extends Component {
     constructor(props) {
@@ -17,13 +17,13 @@ class SearchInput extends Component {
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.theming = this.theming.bind(this);
-        this.fethingData = this.fethingData.bind(this)
+        // this.fetching = this.fetching.bind(this)
     }
 
     changeHandler(e) {
         if(e.target.value === "") {
             this.setState({
-                inputValue: `region/americas`
+                inputValue: "region/oceania"
             })    
         } else {
             this.setState({
@@ -33,44 +33,39 @@ class SearchInput extends Component {
         
     }
     
-    
-    fethingData() {
-        fetch(`https://restcountries.eu/rest/v2/${this.state.inputValue}`)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                if(result.status) {
-                    this.setState({
-                        isLoaded: true,
-                        countries: [{name: `No country found, check your spelling and try again :)`}]
-                    });
-                } else {
-                    this.setState({
-                        isLoaded: true,
-                        countries: result
-                    });    
-                }
-            },
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                });
-            }
-            )
-        }
+    // fetching() {
+    //     fetch(`https://restcountries.eu/rest/v2/${this.state.inputValue}`)
+    //     .then(res => res.json())
+    //     .then(
+    //         (result) => {
+    //             //the status is only set when data isn't fetched.
+    //             if(result.status) {
+    //                 //sending data to the store redux.
+    //                 console.log(result);
+    //                 store.dispatch(addindCountryAction([{name: `No country found, check your spelling and try again :)`}]
+    //                 ));
+    //             } else {
+    //                 console.log(result);
+    //                 store.dispatch(addindCountryAction(result))
+    //             }
+    //         },
+    //         (error) => {
+    //             console.log(error)
+    //         }
+    //         )
+    //     }
         
-    componentDidMount() {
-        this.fethingData();
-    }
+    // componentDidMount() {
+    //     // this.fetching();
+    // }
 
     submitting(event) {
-        this.fethingData();
+        console.log(store.getState())
         event.preventDefault();
     }
     
     theming() {
-        if(store.getState().theming === "light-theme"){
+        if(store.getState().themeMode.theming === "light-theme"){
             return "light-theme"
         } else {
             return "dark-theme" 
@@ -84,7 +79,6 @@ class SearchInput extends Component {
                         <img onClick={this.submitting} className={"searchIcon"} src={searchIcon} alt={"search-icon"}></img>
                         <input onChange={this.changeHandler} type={"text"} className={`searchInput ${this.theming()}`} placeholder={"Search for a country..."}></input>
                     </div>
-                    <CountryInCards query={this.state} />
             </form>    
         )
     }

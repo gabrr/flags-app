@@ -16,7 +16,7 @@ class Navbar extends Component {
     }
             
     MoonMode() {
-        if(store.getState().theming === "light-theme") {
+        if(store.getState().themeMode.theming === "light-theme") {
             return lightMoon
         } else {
             return darkMoon
@@ -24,10 +24,10 @@ class Navbar extends Component {
     }
 
     navbarBackground() {
-        if(store.getState().theming === "light-theme") {
-            return {backgroundColor: store.getState().lightTheme.elements}
+        if(store.getState().themeMode.theming === "light-theme") {
+            return {backgroundColor: store.getState().themeMode.lightTheme.elements}
         } else {
-            return {backgroundColor: store.getState().darkTheme.elements}
+            return {backgroundColor: store.getState().themeMode.darkTheme.elements}
         }
     }
 
