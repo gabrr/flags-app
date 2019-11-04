@@ -3,15 +3,28 @@ import React, { Component } from 'react'
 
 
 class RegionFilter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            region: "region/americas",
+            regions: [
+                "americas",
+                "asia",
+                "europa",
+                "africa",
+                "oceania"
+            ]
+        }
+    }
+    
     render() {
         return (
             <div id="region-filter">
                 <ul>
-                    <li value={"Africa"}>Africa</li>
-                    <li value={"America"}>America</li>
-                    <li value={"Asia"}>Asia</li>
-                    <li value={"Europa"}>Europe</li>
-                    <li value={"Oceania"}>Oceania</li>
+                    {console.log(this.props.state)}
+                    {this.state.regions.map( x => {
+                        return <li onClick={this.props.region} key={x}>{x}</li>
+                    })}
                 </ul>
             </div>
         )
