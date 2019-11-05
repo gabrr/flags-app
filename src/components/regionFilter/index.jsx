@@ -21,7 +21,6 @@ class RegionFilter extends Component {
         return (
             <div id="region-filter">
                 <ul>
-                    {console.log(this.props.state)}
                     {this.state.regions.map( x => {
                         return <li onClick={this.props.region} key={x}>{x}</li>
                     })}

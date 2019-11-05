@@ -12,15 +12,26 @@ class Navbar extends Component {
         };
 
         this.moonMode = this.moonMode.bind(this);
-        this.navbarBackground = this.navbarBackground.bind(this)
+        this.navbarBackground = this.navbarBackground.bind(this);
+        this.setTheme = this.setTheme.bind(this);
+
     }
             
     moonMode() {
-        if(store.getState().theming === "light-theme") {
-            return lightMoon
+        let moon = document.getElementsByClassName("moon-icon");
+        
+        if(store.getState().theming === "dark-theme") {
+            moon[1].style.display = "none";
+            moon[0].style.display = "block";
         } else {
-            return darkMoon
+            moon[0].style.display = "none";
+            moon[1].style.display = "block";
         }
+    }
+
+    setTheme() {
+        this.props.setTheme();
+        this.moonMode();
     }
 
     navbarBackground() {
@@ -36,12 +47,11 @@ class Navbar extends Component {
             <div id="navbar" style={this.navbarBackground()}>
                 <ul>
                     <li className="title">Where in the world?</li>
-                    <li onClick={this.props.setTheme} onClick={this.moonMode()} className="light-toggle"><img className={"moon-icon"} src={darkMoon} alt={"moon"} /><img className={"moon-icon"} src={lightMoon} alt={"moon"} />Dark Mode</li>
+                    <li onClick={this.setTheme} className="light-toggle"><img className={"moon-icon"} src={darkMoon} alt={"moon"} /><img className={"moon-icon"} src={lightMoon} alt={"moon"} />Dark Mode</li>
                 </ul>
             </div>
         );
     }
 }
-
 
 export default Navbar;
