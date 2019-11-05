@@ -1,14 +1,14 @@
-#wrapper{
+#wrapper {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
-.light-theme{
+#wrapper.light-theme {
     background-color: hsl(0, 0%, 98%);
     color: hsl(200, 15%, 8%);
 }
 
-.dark-theme{
+#wrapper.dark-theme {
     background-color: hsl(207, 26%, 17%);
     color: hsl(0, 0%, 100%);
 }
