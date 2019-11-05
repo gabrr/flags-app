@@ -11,11 +11,11 @@ class Navbar extends Component {
             theming: ""
         };
 
-        this.MoonMode = this.MoonMode.bind(this);
+        this.moonMode = this.moonMode.bind(this);
         this.navbarBackground = this.navbarBackground.bind(this)
     }
             
-    MoonMode() {
+    moonMode() {
         if(store.getState().theming === "light-theme") {
             return lightMoon
         } else {
@@ -36,7 +36,7 @@ class Navbar extends Component {
             <div id="navbar" style={this.navbarBackground()}>
                 <ul>
                     <li className="title">Where in the world?</li>
-                    <li onClick={this.props.setTheme} className="light-toggle"><img className={"moon-icon"} src={this.MoonMode()} alt={"moon"} />Dark Mode</li>
+                    <li onClick={this.props.setTheme} onClick={this.moonMode()} className="light-toggle"><img className={"moon-icon"} src={darkMoon} alt={"moon"} /><img className={"moon-icon"} src={lightMoon} alt={"moon"} />Dark Mode</li>
                 </ul>
             </div>
         );

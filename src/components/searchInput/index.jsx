@@ -22,6 +22,13 @@ class SearchInput extends Component {
         this.regionSetter = this.regionSetter.bind(this);
     }
 
+    regionSetter(region) {
+        this.setState({
+            inputValue: `region/${region.target.innerHTML}`
+        });
+        this.fethingData(`region/${region.target.innerHTML}`)
+    }
+
     changeHandler(e) {
         if(e.target.value === "") {
             this.setState({
@@ -36,8 +43,8 @@ class SearchInput extends Component {
     }
     
     
-    fethingData() {
-        fetch(`https://restcountries.eu/rest/v2/${this.state.inputValue}`)
+    fethingData(query) {
+        fetch(`https://restcountries.eu/rest/v2/${query}`)
         .then(res => res.json())
         .then(
             (result) => {
@@ -63,11 +70,11 @@ class SearchInput extends Component {
         }
         
     componentDidMount() {
-        this.fethingData();
+        this.fethingData(this.state.inputValue);
     }
 
     submitting(event) {
-        this.fethingData();
+        this.fethingData(this.state.inputValue);
         event.preventDefault();
     }
     
@@ -79,11 +86,6 @@ class SearchInput extends Component {
         }
     }
 
-    regionSetter(region) {
-        this.setState({
-            inputValue: `region/${region.target.innerHTML}`
-        })
-    }
 
     render() {
         return (

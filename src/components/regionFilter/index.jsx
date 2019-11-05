@@ -10,7 +10,7 @@ class RegionFilter extends Component {
             regions: [
                 "americas",
                 "asia",
-                "europa",
+                "europe",
                 "africa",
                 "oceania"
             ]
