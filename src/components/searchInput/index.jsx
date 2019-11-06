@@ -13,6 +13,7 @@ class SearchInput extends Component {
             countries: [],
             isLoaded: false,
             error: null,
+            countryName: ""
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
@@ -35,7 +36,8 @@ class SearchInput extends Component {
             })    
         } else {
             this.setState({
-                inputValue: `name/${e.target.value}`
+                inputValue: `name/${e.target.value}`,
+                countryName: e.target.value
             })
         }
         
@@ -43,6 +45,9 @@ class SearchInput extends Component {
     
     //to get countries from API
     fethingData(query) {
+        this.setState({
+            isLoaded: false,
+        });
         fetch(`https://restcountries.eu/rest/v2/${query}`)
         .then(res => res.json())
         .then(
@@ -50,7 +55,7 @@ class SearchInput extends Component {
                 if(result.status) {
                     this.setState({
                         isLoaded: true,
-                        countries: [{name: `No country found, check your spelling and try again :)`}]
+                        countries: [{name: "none found"}]
                     });
                 } else {
                     this.setState({
@@ -136,7 +141,7 @@ class SearchInput extends Component {
                         <input onChange={this.changeHandler} type={"text"} style={this.inputTheme()} className={"searchInput"} placeholder={"Search for a country..."}></input>
                     </div>
                     <RegionFilter state={this.state} region={this.regionSetter} />
-                    <CountryInCards query={this.state} />
+                    <CountryInCards state={this.state} query={this.state} />
             </form>    
         )
     }
