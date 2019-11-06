@@ -31,7 +31,7 @@ class CountryInCards extends Component {
         } else if(this.props.query.countries[0].name === "none found") {
             return (
                 <div className={"nothingFound"}>
-                    <h1>Please accept our apologies, We couldn't find a country named {this.props.state.countryName}. Try another one ;)</h1>
+                    <h1>Please accept our apologies,<br/> We couldn't find a country named {this.props.state.countryName}. Try another one ;)</h1>
                 </div>
             )
         } else {
@@ -39,9 +39,9 @@ class CountryInCards extends Component {
                 <div className="#cards">
                     {this.props.query.countries.map( country => {
                             return (
-                                <div className="card" key={country.numericCode}>
+                                <div className="card" key={country.name}>
                                     <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
-                                    <h1 className={"country-name"} key={country.numericCode}>{country.name}</h1>
+                                    <h1 className={"country-name"} key={country.area}>{country.name}</h1>
                                     <ul className={"countries-details"}>
                                         <li><span>Population:</span> {this.numberWithCommas(country.population)}</li>
                                         <li><span>Region:</span> {country.region}</li>
