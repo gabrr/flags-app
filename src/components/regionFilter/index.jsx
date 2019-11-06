@@ -47,7 +47,7 @@ class RegionFilter extends Component {
                     <p>Filter by region</p>
                     <img id={"down-arrow"} src={this.downArrowTheme()} alt={"down arrow"}/>
                 </div>
-                <ul>
+                <ul style={this.btRegionTheme()}>
                     {this.state.regions.map( x => {
                         return <li onClick={this.props.region} key={x}>{x}</li>
                     })}

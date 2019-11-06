@@ -4,7 +4,7 @@
     height: 50px;
     margin: 35px 0 0 5%;
     position: relative;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
 }
@@ -23,4 +23,24 @@
     right: 13%;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#region-filter {
+    margin-bottom: 35px;
+}
+
+#region-filter ul {
+    min-width: 190px;
+    width: 50%;
+    padding: 10px 0;
+    position: absolute;
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
+}
+
+#region-filter ul li {
+    margin: 10px 13%;
 }
