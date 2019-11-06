@@ -2,7 +2,17 @@
     display: grid;
 }
 
+@keyframes fading {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .card {
+    animation: fading 2000ms ease-in-out;
     width: 80%;
     margin: 0 auto 35px;
     height: auto;
@@ -12,7 +22,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.3fr 0.5fr;
     padding-bottom: 30px;
-    transition: ease-in-out 300ms;
 }
 
 .flags {
