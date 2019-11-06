@@ -75,8 +75,7 @@ class SearchInput extends Component {
         this.fethingData(this.state.inputValue);
     }
 
-    //to load data on submitting the name searched
-    submitting(event) {
+    searchIconAnim() {
         let SearchIconElem = document.getElementsByClassName("searchIcon")[0];
         SearchIconElem.animate([
             {transform: "translate(12px, -4px) scale(1.3)"},
@@ -85,9 +84,13 @@ class SearchInput extends Component {
         ], {
             duration: 300
         })
-
+    }
+    
+    //to load data on submitting the name searched
+    submitting(event) {
         this.fethingData(this.state.inputValue);
         event.preventDefault();
+        this.searchIconAnim();
     }
     
     //setting the theme for the 
