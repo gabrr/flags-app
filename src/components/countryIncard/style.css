@@ -1,22 +1,41 @@
-.cards{
+#cards {
     display: grid;
 }
 
-.card{
+.card {
     width: 80%;
-    margin: 40px auto 0;
+    margin: 0 auto 35px;
     height: auto;
+    border-radius: 7px;
     display: grid;
+    box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 20px 40px;
+    grid-template-rows: 1fr 0.3fr 0.5fr;
+    padding-bottom: 30px;
 }
 
-.flags{
+.flags {
     width: 100%;
     height: auto;
+    border-radius: 7px 7px 0 0;
 }
 
-.country-name{
-    font-size: 16px;
+.country-name {
+    font-size: 18px;
+    margin: 30px 0 15px 13%;
 }
 
+.countries-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.countries-details li {
+    margin: 3px 0 5px 13%;
+    font-size: 14px;
+}
+
+.countries-details span {
+    font-weight: 600
+}
