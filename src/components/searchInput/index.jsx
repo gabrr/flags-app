@@ -77,6 +77,15 @@ class SearchInput extends Component {
 
     //to load data on submitting the name searched
     submitting(event) {
+        let SearchIconElem = document.getElementsByClassName("searchIcon")[0];
+        SearchIconElem.animate([
+            {transform: "translate(12px, -4px) scale(1.3)"},
+            {transform: "translateX(15px"},
+
+        ], {
+            duration: 300
+        })
+
         this.fethingData(this.state.inputValue);
         event.preventDefault();
     }
