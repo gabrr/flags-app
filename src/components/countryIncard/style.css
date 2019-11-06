@@ -12,6 +12,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.3fr 0.5fr;
     padding-bottom: 30px;
+    transition: ease-in-out 300ms;
 }
 
 .flags {
@@ -38,4 +39,54 @@
 
 .countries-details span {
     font-weight: 600
+}
+
+#loading {
+    width: 100%;
+    padding-top: 50px;
+}
+
+#loading .circles {
+    padding: 0 50%;
+    position: relative;
+}
+
+@keyframes dancing {
+    from {
+        top: -10px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+#loading .circle {
+    position: absolute;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 2px solid #888;
+}
+
+#loading .circle:nth-child(1) {
+    left: 45%;
+    animation: 200ms dancing ease-in-out alternate infinite;
+}
+
+#loading .circle:nth-child(2) {
+    left: 50%;
+    animation: 200ms dancing 200ms ease-in-out alternate infinite;
+}
+
+#loading .circle:nth-child(3) {
+    left: 55%;
+    animation: 200ms dancing 100ms ease-in-out alternate infinite;
+}
+
+.nothingFound h1 {
+    font-size: 20px;
+    margin: 30px 6%;
+    font-weight: 300;
 }
