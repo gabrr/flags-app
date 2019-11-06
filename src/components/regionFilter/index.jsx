@@ -33,16 +33,37 @@ class RegionFilter extends Component {
 
     showList() {
         let regionsCard = document.getElementById("regions-list");
+        let downArrowAnimated = document.getElementById("down-arrow");
+
         if(!this.state.buttonClicked) {
             regionsCard.style.display = "block"
             this.setState({
                 buttonClicked: true,
             })
+
+            downArrowAnimated.animate([
+                // keyframes
+                { transform: 'translateY(-5%)' }, 
+                { transform: 'translateY(-50%)' }
+              ], { 
+                // timing options
+                duration: 200,
+              })
+
         } else {
             regionsCard.style.display = "none"
             this.setState({
                 buttonClicked: false,
             })
+
+            downArrowAnimated.animate([
+                // keyframes
+                { transform: 'translateY(-80%)' }, 
+                { transform: 'translateY(-50%)' }
+              ], { 
+                // timing options
+                duration: 200,
+              })
         }
     }
 
@@ -57,6 +78,8 @@ class RegionFilter extends Component {
             }
         }
     }
+
+    
 
     render() {
         return (
