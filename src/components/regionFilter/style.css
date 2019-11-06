@@ -29,6 +29,17 @@
     margin-bottom: 35px;
 }
 
+@keyframes goingDown {
+    from {
+        margin-top: -10px;
+        opacity: .5;
+    }
+    to {
+        margin-top: 10px;
+        opacity: 1;
+    }
+}
+
 #region-filter ul {
     display: none;
     min-width: 190px;
@@ -36,6 +47,7 @@
     padding: 10px 0;
     position: absolute;
     list-style: none;
+    animation: goingDown ease-in-out 300ms;
     margin-top: 10px;
     margin-left: 5%;
     border-radius: 7px;
