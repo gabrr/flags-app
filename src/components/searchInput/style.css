@@ -25,7 +25,7 @@
     height: 18px;
     margin-left: 100%;
     transform: translateX(15px);
-    padding-top: 17px;
+    padding-top: 19px;
 }
 
 input.searchInput.light-theme-holder::placeholder {
