@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import searchIcon from '../../img/svg/search.svg';
 import store from "../../store";
 import "./style.css";
 import CountryInCards from '../countryIncard';
@@ -84,13 +83,22 @@ class SearchInput extends Component {
     
     //setting the theme for the 
     inputTheme() {
+        var any = document.getElementsByClassName("searchInput");
         if(store.getState().theming === "light-theme"){
+            if(any[0]) {
+                any[0].className = "light-theme-holder searchInput";
+            }
+
             return {
                 backgroundColor: store.getState().lightTheme.elements,
                 boxShadow: "0 0 13px 0 rgba(0, 0, 0, 0.1)",
                 color: store.getState().lightTheme.text
             }
-        } else {
+        } else { 
+            if(any[0]) {
+                any[0].className = "dark-theme-holder searchInput";
+            }
+
             return {
                 backgroundColor: store.getState().darkTheme.elements,
                 boxShadow: "0 0 13px 0 rgba(0, 0, 0, 0.1)",
