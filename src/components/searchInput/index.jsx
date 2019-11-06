@@ -91,7 +91,6 @@ class SearchInput extends Component {
 
             return {
                 backgroundColor: store.getState().lightTheme.elements,
-                boxShadow: "0 0 13px 0 rgba(0, 0, 0, 0.1)",
                 color: store.getState().lightTheme.text
             }
         } else { 
@@ -101,7 +100,6 @@ class SearchInput extends Component {
 
             return {
                 backgroundColor: store.getState().darkTheme.elements,
-                boxShadow: "0 0 13px 0 rgba(0, 0, 0, 0.1)",
                 color: store.getState().darkTheme.text
             }
         }

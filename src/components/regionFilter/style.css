@@ -30,6 +30,7 @@
 }
 
 #region-filter ul {
+    display: none;
     min-width: 190px;
     width: 50%;
     padding: 10px 0;

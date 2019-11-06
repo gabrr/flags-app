@@ -16,8 +16,11 @@ class RegionFilter extends Component {
                 "Asia",
                 "Europe",
                 "Oceania"
-            ]
+            ],
+            buttonClicked: false
         }
+
+        this.showList = this.showList.bind(this)
     }
     
     downArrowTheme() {
@@ -25,6 +28,21 @@ class RegionFilter extends Component {
             return downArrow;
         } else {
             return lightDownArrow;
+        }
+    }
+
+    showList() {
+        let regionsCard = document.getElementById("regions-list");
+        if(!this.state.buttonClicked) {
+            regionsCard.style.display = "block"
+            this.setState({
+                buttonClicked: true,
+            })
+        } else {
+            regionsCard.style.display = "none"
+            this.setState({
+                buttonClicked: false,
+            })
         }
     }
 
@@ -43,11 +61,11 @@ class RegionFilter extends Component {
     render() {
         return (
             <div id="region-filter">
-                <div id="show-regions-bt" style={this.btRegionTheme()}>
+                <div id="show-regions-bt" onClick={this.showList} style={this.btRegionTheme()}>
                     <p>Filter by region</p>
                     <img id={"down-arrow"} src={this.downArrowTheme()} alt={"down arrow"}/>
                 </div>
-                <ul style={this.btRegionTheme()}>
+                <ul id={"regions-list"} style={this.btRegionTheme()}>
                     {this.state.regions.map( x => {
                         return <li onClick={this.props.region} key={x}>{x}</li>
                     })}
