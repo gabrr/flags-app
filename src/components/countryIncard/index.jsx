@@ -39,9 +39,9 @@ class CountryInCards extends Component {
                 <div className="#cards">
                     {this.props.query.countries.map( country => {
                             return (
-                                <div className="card" key={Math.random() * 1.3}>
-                                    <img className={"flags"} key={Math.random() * 1.3} src={country.flag} alt={"flag"}></img>
-                                    <h1 className={"country-name"} key={Math.random() * 1.3}>{country.name}</h1>
+                                <div className="card" key={country.numericCode}>
+                                    <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
+                                    <h1 className={"country-name"} key={country.numericCode}>{country.name}</h1>
                                     <ul className={"countries-details"}>
                                         <li><span>Population:</span> {this.numberWithCommas(country.population)}</li>
                                         <li><span>Region:</span> {country.region}</li>
