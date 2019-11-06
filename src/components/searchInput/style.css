@@ -27,3 +27,13 @@
     transform: translateX(15px);
     padding-top: 12px;
 }
+
+input.searchInput.light-theme-holder::placeholder {
+    color: hsl(0, 0%, 52%);
+    font-weight: 300;
+}
+
+input.searchInput.dark-theme-holder::placeholder {
+    color: hsl(0, 0%, 100%);
+    font-weight: 300;
+}
