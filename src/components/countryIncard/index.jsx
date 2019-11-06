@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import "./style.css"
+import store from "../../store";
+import "./style.css";
 
 class CountryInCards extends Component {
     constructor(props) {
@@ -14,6 +15,18 @@ class CountryInCards extends Component {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }   
         return null
+    }
+
+    cardBackground() {
+        if(store.getState().theming === "light-theme") {
+            return {
+                backgroundColor: store.getState().lightTheme.elements
+            }
+        } else {
+            return {
+                backgroundColor: store.getState().darkTheme.elements
+            } 
+        }
     }
 
     render() {
@@ -39,7 +52,7 @@ class CountryInCards extends Component {
                 <div className="#cards">
                     {this.props.query.countries.map( country => {
                             return (
-                                <div className="card" key={country.name}>
+                                <div style={this.cardBackground()} className="card" key={country.name}>
                                     <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
                                     <h1 className={"country-name"} key={country.area}>{country.name}</h1>
                                     <ul className={"countries-details"}>
