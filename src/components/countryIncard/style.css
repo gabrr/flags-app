@@ -2,6 +2,11 @@
     display: grid;
 }
 
+a {
+    text-decoration: none !important;
+    color: currentColor !important;
+}
+
 @keyframes fading {
     from {
         opacity: 0;
@@ -22,6 +27,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.3fr 0.5fr;
     padding-bottom: 30px;
+    text-decoration: none;
 }
 
 .flags {
