@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import store from "../../store";
 import "./style.css";
+import Details from "../../App"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useParams
+  } from "react-router-dom";
 
 class CountryInCards extends Component {
     constructor(props) {
@@ -49,23 +58,28 @@ class CountryInCards extends Component {
             )
         } else {
             return (
-                <div className="#cards">
-                    {this.props.query.countries.map( country => {
+                    <div className="#cards">
+                        {this.props.query.countries.map( country => {
                             return (
-                                <div style={this.cardBackground()} className="card" key={country.name}>
-                                    <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
-                                    <h1 className={"country-name"} key={country.area}>{country.name}</h1>
-                                    <ul className={"countries-details"}>
-                                        <li><span>Population:</span> {this.numberWithCommas(country.population)}</li>
-                                        <li><span>Region:</span> {country.region}</li>
-                                        <li><span>Capital:</span> {country.capital}</li>
-                                    </ul>
-                                </div>
-                                
+                                <Link key={country.demonym} to="/details">
+                                    <div style={this.cardBackground()} className="card" key={country.name}>
+                                        <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
+                                        <h1 className={"country-name"} key={country.area}>{country.name}</h1>
+                                        <ul className={"countries-details"}>
+                                            <li><span>Population:</span> {this.numberWithCommas(country.population)}</li>
+                                            <li><span>Region:</span> {country.region}</li>
+                                            <li><span>Capital:</span> {country.capital}</li>
+                                        </ul>
+                                    </div>
+                                </Link>
                             )
-                        }
-                    )} 
-                </div>
+                        })}
+                        <Switch>
+                            <Route path="/details">
+                                <Details/>
+                            </Route>
+                        </Switch>
+                    </div>
             )
         }
     }
