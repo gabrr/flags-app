@@ -12,21 +12,13 @@ function App() {
   return (
     <Router>
       <Provider store={store}>
-        <Switch>
-            <Route exact path="/">
-              <div className="App">
-                <Wrapper />
-              </div>
-            </Route>
-            <Route path="/details">
-              <Details />
-            </Route>
-        </Switch>
+          <div className="App">
+            <Wrapper />
+          </div>
       </Provider>
     </Router>
   );
 }
 
-export const Details = () => <h1>Hey deatils</h1>
 
 export default App;

@@ -3,6 +3,12 @@ import Navbar from "../navbar";
 import SearchInput from "../searchInput";
 import "./style.css";
 import store from "../../store";
+import CountriesDetails from "../countryDetails"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+  } from "react-router-dom";
 
 class Wrapper extends Component {
     constructor(props) {
@@ -23,7 +29,14 @@ class Wrapper extends Component {
         return (
             <div id="wrapper" className={this.state.theming}>
                 <Navbar setTheme={this.setTheme} />
-                <SearchInput />
+                <Switch>
+                    <Route exact path={"/"}>
+                        <SearchInput />
+                    </Route>
+                    <Route path={"/:id"}>
+                        <CountriesDetails state={this.state} />
+                    </Route>       
+                </Switch>
             </div>
         );
     }
