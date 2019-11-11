@@ -34,7 +34,7 @@ class Wrapper extends Component {
                         <SearchInput />
                     </Route>
                     <Route path={"/:id"}>
-                        <CountriesDetails state={this.state} />
+                        <CountriesDetails />
                     </Route>       
                 </Switch>
             </div>
