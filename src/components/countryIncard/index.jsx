@@ -61,7 +61,7 @@ class CountryInCards extends Component {
                     <div className="#cards">
                         {this.props.query.countries.map( country => {
                             return (
-                                <Link key={country.demonym} to="/details">
+                                <Link key={country.demonym} to={`/${country.alpha3Code}`}>
                                     <div style={this.cardBackground()} className="card" key={country.name}>
                                         <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
                                         <h1 className={"country-name"} key={country.area}>{country.name}</h1>
@@ -74,11 +74,6 @@ class CountryInCards extends Component {
                                 </Link>
                             )
                         })}
-                        <Switch>
-                            <Route path="/details">
-                                <Details/>
-                            </Route>
-                        </Switch>
                     </div>
             )
         }
