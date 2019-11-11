@@ -1,9 +1,47 @@
-#details {
-    margin: 0;
+#details-page {
+    margin: 0 5%;
+}
+
+.square-element {
+    box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
+    border-radius: 5px;
 }
 
 #button-to-home {
-    width: 150px;
+    width: 28vw;
     height: 40px;
-    background-color: red;
+    margin: 35px auto;
+    display: -webkit-inline-box;
+}
+
+#button-to-home p {
+    font-size: 14px;
+    margin-top: 11px;
+}
+
+#arrow-back {
+    width: 16%;
+    margin: 11px 10px 0 23%;
+}
+
+#details-page img {
+    width: 100%;
+    margin: auto;
+    height: auto;
+}
+
+#details-page ul {
+    list-style: none;
+    padding-left: 0%;
+}
+
+#details-page .countries-border-row span {
+    width: 100%;
+}
+
+#details-page .countries-border-row li {
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    margin: 5px;
 }
