@@ -5,7 +5,7 @@ import "./style.css";
 import store from "../../store";
 import CountriesDetails from "../countryDetails"
 import {
-    BrowserRouter as Router,
+    BrowserRouter as 
     Switch,
     Route
   } from "react-router-dom";

@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import store from "../../store";
 import "./style.css";
-import Details from "../../App"
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
-    useParams
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class CountryInCards extends Component {
     constructor(props) {
