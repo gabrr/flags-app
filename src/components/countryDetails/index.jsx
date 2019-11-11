@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouteMatch } from "react-router-dom";
+import "./style.css";
 
 export default function CountryDetails(props) {
     const match = useRouteMatch("/:id")
@@ -18,7 +19,7 @@ export default function CountryDetails(props) {
     }
 
     return (
-        <div>
+        <div id={"details"}>
             <h1>This is details for {match.params.id}</h1>     
         </div>
     )
