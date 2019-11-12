@@ -36,14 +36,14 @@ class Navbar extends Component {
 
     navbarBackground() {
         if(store.getState().theming === "light-theme") {
-            document.body.style.backgroundColor = store.getState().lightTheme.elements
+            document.body.style.backgroundColor = store.getState().lightTheme.background
             return {
                 backgroundColor: store.getState().lightTheme.elements, 
                 transition: "background-color 200ms linear 20ms",
                 color: store.getState().lightTheme.text
             }
         } else {
-            document.body.style.backgroundColor = store.getState().darkTheme.elements
+            document.body.style.backgroundColor = store.getState().darkTheme.background
             return {
                 backgroundColor: store.getState().darkTheme.elements, 
                 transition: "background-color 200ms linear 20ms",
