@@ -19,12 +19,11 @@ export default function CountryDetails(props) {
     
     console.log(country)
     //formating the strings in a object, joining the values by comma
-    //and then adding a dot on the end of the string.
     const formsStrArray = (array) => {
         if(array) {
             const coinsName = array.map(x => x.name ? x.name : "")
             const string = coinsName.join(", ") 
-            return string + "."
+            return string
         }
     }
 
@@ -79,6 +78,7 @@ export default function CountryDetails(props) {
                 <ul>
                     <li className={"square-element"}>Brazil</li>
                     <li className={"square-element"}>Argentina</li>
+                    <li className={"square-element"}>Paraguay</li>
                     <li className={"square-element"}>Paraguay</li>
                 </ul>
             </div>
