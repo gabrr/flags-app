@@ -1,25 +1,23 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from 'react'
 import { useRouteMatch } from "react-router-dom";
 import "./style.css";
 import { Link } from "react-router-dom";
 import store from "../../store";
+import axios from 'axios';
 
 export default function CountryDetails(props) {
     const match = useRouteMatch("/:id")
     const [country, setCountry] = useState([]);
 
     useEffect(() => {
-        getCountryDetails();
-    });
-        
-    const getCountryDetails = async () => {
-        const data = await fetch(`https://restcountries.eu/rest/v2/alpha/${match.params.id}`)
-        const item  = await data.json();
-
-        setCountry(item);    
-    }
-
+        const fetchCountries = async () => {
+            const data = await axios(`https://restcountries.eu/rest/v2/alpha/${match.params.id}`, );
+            setCountry(data.data)
+        }
+        fetchCountries();
+    }, [match.params.id]);
+    
+    console.log(country)
     //formating the strings in a object, joining the values by comma
     //and then adding a dot on the end of the string.
     const formsStrArray = (array) => {
