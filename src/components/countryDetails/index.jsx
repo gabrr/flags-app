@@ -20,6 +20,17 @@ export default function CountryDetails(props) {
         setCountry(item);    
     }
 
+    //formating the strings in a object, joining the values by comma
+    //and then adding a dot on the end of the string.
+    const formsStrArray = (array) => {
+        if(array) {
+            const coinsName = array.map(x => x.name ? x.name : "")
+            const string = coinsName.join(", ") 
+            return string + "."
+        }
+    }
+
+    //toggling the background theme 
     const elementBackground = () => {
         if(store.getState().theming === "light-theme") {
             return {
@@ -51,16 +62,18 @@ export default function CountryDetails(props) {
             <div className={"first-list"}>
                 <h1>{country.name}</h1>
                 <ul>
+                    <li><span>Native name:</span>{country.nativeName}</li>
                     <li><span>Population:</span>{country.population}</li>
                     <li><span>Region:</span> {country.region}</li>
+                    <li><span>Sub Region:</span> {country.subregion}</li>
                     <li><span>Capital:</span> {country.capital}</li>
                 </ul>
             </div>
             <div className={"second-list"}>
                 <ul>
-                    <li><span>Population:</span>{country.population}</li>
-                    <li><span>Region:</span> {country.region}</li>
-                    <li><span>Capital:</span> {country.capital}</li>
+                    <li><span>Top level domain:</span> {country.capital}</li>
+                    <li><span>Currencies:</span> {formsStrArray(country.currencies)}</li>
+                    <li><span>Languages:</span> {formsStrArray(country.languages)}</li>
                 </ul>
             </div>  
             <div className={"countries-border-row"}>
