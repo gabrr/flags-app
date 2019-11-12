@@ -121,4 +121,7 @@ a {
     .card {
         width: 100%;
     }
+    .nothingFound {
+        clear: both;
+    }
 }
