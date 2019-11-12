@@ -45,3 +45,40 @@
     padding: 10px 20px;
     margin: 5px 10px 5px 0;
 }
+
+@media only screen and (min-width: 768px) {
+    #button-to-home {
+        width: 190px;
+    }
+    #arrow-back {
+        width: 19px;
+    }
+    #details-page img {
+        width: 120%;
+        margin-left: 0;
+        grid-column: 1;
+        grid-row: span 2;
+    }
+    #details-page {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+    }
+    #details-page a {
+        grid-column: span 3;
+        grid-row: 1;
+    }
+    #details-page .first-list {
+        margin-left: 10vw;
+    }
+    #details-page .first-list h1 {
+        font-size: 22px;
+    }
+    #details-page .second-list {
+        align-self: center;
+        margin-left: 5vw;
+    }
+    #details-page .countries-border-row {
+        grid-column: span 2;
+        margin-left: 10vw;
+    }
+}
