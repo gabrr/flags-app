@@ -50,7 +50,7 @@ class CountryInCards extends Component {
             )
         } else {
             return (
-                    <div className="#cards">
+                    <div id="cards">
                         {this.props.query.countries.map( country => {
                             return (
                                 <Link key={country.demonym} to={`/${country.alpha3Code}`}>
