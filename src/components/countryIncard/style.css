@@ -1,5 +1,10 @@
 #cards {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 40px 5%;
+    row-gap: 20px;
+    column-gap: 2%;
 }
 
 a {
@@ -18,9 +23,9 @@ a {
 
 .card {
     animation: fading 2000ms ease-in-out;
-    width: 80%;
+    width: 90%;
     margin: 0 auto 35px;
-    height: auto;
+    min-height: 300px;
     border-radius: 7px;
     display: grid;
     box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
@@ -107,11 +112,10 @@ a {
     font-weight: 300;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 599px) {
     #cards {
         display: grid;
-        place-items: center;
-        grid-template-columns: 33% 33% 33%;
+        grid-template-columns: 48% 48%;
         width: 90%;
         margin: 40px 5%;
         grid-row-gap: 10px;
@@ -120,30 +124,18 @@ a {
         margin: 35px 0 0 0 !important;
     }
     .card {
-        width: 90%;
-        margin: 10px 5%;
-        max-width: 230px;
-        height: 280px;
+        max-width: 260px;
+        width: 100%;
     }
     .nothingFound {
         clear: both;
     }
 }
 
-@media only screen and (min-width: 840px) {
-    .card {
-        width: 100%;
-        margin: 10px 0;
-        max-width: 230px;
-        height: 280px;
-    }
-}
-
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 810px) {
     #cards {
         display: grid;
-        place-items: center;
-        grid-template-columns: repeat(4, 25%);
+        grid-template-columns: repeat(3, 32%);
         width: 90%;
         margin: 40px 5%;
         grid-row-gap: 10px;
@@ -151,7 +143,34 @@ a {
     .card {
         width: 100%;
         margin: 10px 0;
-        max-width: 240px;
-        height: auto;
+    }
+}
+
+@media only screen and (min-width: 910px) {
+    #cards {
+        display: grid;
+        grid-template-columns: repeat(3, 32%);
+        width: 90%;
+        margin: 40px 5%;
+        grid-row-gap: 10px;
+    }
+    .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 1220px) {
+    #cards {
+        display: grid;
+        grid-template-columns: repeat(4, 24%);
+        width: 90%;
+        margin: 40px 5%;
+        grid-row-gap: 10px;
+    }
+    .card {
+        max-width: 260px;
+        width: 100%;
+        margin: 10px 0;
     }
 }
