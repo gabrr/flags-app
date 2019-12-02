@@ -120,6 +120,9 @@ a {
         margin: 40px 5%;
         grid-row-gap: 10px;
     }
+    #region-filter {
+        margin-left: 5%;
+    }
     #show-regions-bt {
         margin: 35px 0 0 0 !important;
     }
