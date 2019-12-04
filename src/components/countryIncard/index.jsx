@@ -19,13 +19,13 @@ class CountryInCards extends Component {
     }
 
     cardBackground() {
-        if(store.getState().theming === "light-theme") {
+        if(localStorage.theme === "light-theme") {
             return {
-                backgroundColor: store.getState().lightTheme.elements
+                backgroundColor: store.getState().themeReducer.lightTheme.elements
             }
         } else {
             return {
-                backgroundColor: store.getState().darkTheme.elements
+                backgroundColor: store.getState().themeReducer.darkTheme.elements
             } 
         }
     }
@@ -42,7 +42,7 @@ class CountryInCards extends Component {
                 </div>
             )
             
-        } else if(this.props.query.countries[0].name === "none found") {
+        } else if(this.props.state.countries[0].name === "none found") {
             return (
                 <div className={"nothingFound"}>
                     <h1>Please accept our apologies,<br/> We couldn't find a country named {this.props.state.countryName}. Try another one ;)</h1>
@@ -51,7 +51,7 @@ class CountryInCards extends Component {
         } else {
             return (
                     <div id="cards">
-                        {this.props.query.countries.map( country => {
+                        {this.props.state.countries.map( country => {
                             return (
                                 <Link key={country.demonym} to={`/${country.alpha3Code}`}>
                                     <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={country.name}>

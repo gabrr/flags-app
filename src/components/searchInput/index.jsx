@@ -18,7 +18,7 @@ class SearchInput extends Component {
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.inputTheme = this.inputTheme.bind(this);
-        this.fethingData = this.fethingData.bind(this);
+        this.fetching = this.fetching.bind(this);
         this.regionSetter = this.regionSetter.bind(this);
     }
 
@@ -26,7 +26,7 @@ class SearchInput extends Component {
         this.setState({
             inputValue: `region/${region.target.innerHTML}`
         });
-        this.fethingData(`region/${region.target.innerHTML}`)
+        this.fetching(`region/${region.target.innerHTML}`)
     }
 
     changeHandler(e) {
@@ -44,7 +44,7 @@ class SearchInput extends Component {
     }
     
     //to get countries from API
-    fethingData(query) {
+    fetching(query) {
         this.setState({
             isLoaded: false,
         });
@@ -52,6 +52,7 @@ class SearchInput extends Component {
         .then(res => res.json())
         .then(
             (result) => {
+                console.log(result)
                 if(result.status) {
                     this.setState({
                         isLoaded: true,
@@ -77,7 +78,7 @@ class SearchInput extends Component {
     
     //to load the data as soon as the component is loaded
     componentDidMount() {
-        this.fethingData(this.state.inputValue);
+        this.fetching(this.state.inputValue);
     }
 
     searchIconAnim() {
@@ -93,7 +94,7 @@ class SearchInput extends Component {
     
     //to load data on submitting the name searched
     submitting(event) {
-        this.fethingData(this.state.inputValue);
+        this.fetching(this.state.inputValue);
         event.preventDefault();
         this.searchIconAnim();
     }
@@ -101,14 +102,14 @@ class SearchInput extends Component {
     //setting the theme for the 
     inputTheme() {
         var any = document.getElementsByClassName("searchInput");
-        if(store.getState().theming === "light-theme"){
+        if(localStorage.theme === "light-theme"){
             if(any[0]) {
                 any[0].className = "light-theme-holder searchInput";
             }
 
             return {
-                backgroundColor: store.getState().lightTheme.elements,
-                color: store.getState().lightTheme.text
+                backgroundColor: store.getState().themeReducer.lightTheme.elements,
+                color: store.getState().themeReducer.lightTheme.text
             }
         } else { 
             if(any[0]) {
@@ -116,22 +117,23 @@ class SearchInput extends Component {
             }
 
             return {
-                backgroundColor: store.getState().darkTheme.elements,
-                color: store.getState().darkTheme.text
+                backgroundColor: store.getState().themeReducer.darkTheme.elements,
+                color: store.getState().themeReducer.darkTheme.text
             }
         }
     }
 
     searchIconTheme() {
-        if(store.getState().theming === "light-theme"){
-            return store.getState().lightTheme.inputText
+        if(localStorage.theme === "light-theme"){
+            return store.getState().themeReducer.lightTheme.inputText
         } else {
-            return store.getState().darkTheme.inputText
+            return store.getState().themeReducer.darkTheme.inputText
         }
     }
 
 
     render() {
+        console.log(this.state)
         return (
             <form id={"form"} onSubmit={this.submitting}>
                     <div style={this.inputTheme()} className={"outerInput"}>
@@ -141,7 +143,7 @@ class SearchInput extends Component {
                         <input style={this.inputTheme()} onChange={this.changeHandler} type={"text"} className={"searchInput"} placeholder={"Search for a country..."}></input>
                     </div>
                     <RegionFilter state={this.state} region={this.regionSetter} />
-                    <CountryInCards state={this.state} query={this.state} />
+                    <CountryInCards state={this.state} />
             </form>    
         )
     }
