@@ -16,11 +16,13 @@ class Navbar extends Component {
         this.setTheme = this.setTheme.bind(this);
 
     }
-            
+    componentDidMount() {
+        this.moonMode();
+    } 
     moonMode() {
         let moon = document.getElementsByClassName("moon-icon");
         
-        if(store.getState().theming === "dark-theme") {
+        if(localStorage.theme === "dark-theme") {
             moon[1].style.display = "none";
             moon[0].style.display = "block";
         } else {
@@ -35,19 +37,21 @@ class Navbar extends Component {
     }
 
     navbarBackground() {
-        if(store.getState().theming === "light-theme") {
-            document.body.style.backgroundColor = store.getState().lightTheme.background
+        if(localStorage.theme === "light-theme") {
+            document.body.style.backgroundColor = store.getState().themeReducer.lightTheme.background
+            document.body.style.color = store.getState().themeReducer.lightTheme.text
             return {
-                backgroundColor: store.getState().lightTheme.elements, 
+                backgroundColor: store.getState().themeReducer.lightTheme.elements, 
                 transition: "background-color 200ms linear 20ms",
-                color: store.getState().lightTheme.text
+                color: store.getState().themeReducer.lightTheme.text
             }
         } else {
-            document.body.style.backgroundColor = store.getState().darkTheme.background
+            document.body.style.backgroundColor = store.getState().themeReducer.darkTheme.background
+            document.body.style.color = store.getState().themeReducer.darkTheme.text
             return {
-                backgroundColor: store.getState().darkTheme.elements, 
+                backgroundColor: store.getState().themeReducer.darkTheme.elements, 
                 transition: "background-color 200ms linear 20ms",
-                color: store.getState().darkTheme.text
+                color: store.getState().themeReducer.darkTheme.text
             }
         }
     }

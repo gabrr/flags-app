@@ -24,10 +24,17 @@ class Wrapper extends Component {
         this.setState({
             theming: store.getState().theming
         })
+        if(!localStorage.theme) {
+            localStorage.setItem("theme", "dark-theme")
+        } else if(localStorage.theme === "light-theme") {
+            localStorage.setItem("theme", "dark-theme")
+        } else {
+            localStorage.setItem("theme", "light-theme")
+        }
     }
     render() {
         return (
-            <div id="wrapper" className={this.state.theming}>
+            <div id="wrapper" className={localStorage.theme}>
                 <Navbar setTheme={this.setTheme} />
                 <Switch>
                     <Route exact path={"/"}>

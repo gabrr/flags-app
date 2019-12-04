@@ -29,13 +29,13 @@ export default function CountryDetails(props) {
 
     //toggling the background theme 
     const elementBackground = () => {
-        if(store.getState().theming === "light-theme") {
+        if(localStorage.theme === "light-theme") {
             return {
-                backgroundColor: store.getState().lightTheme.elements
+                backgroundColor: store.getState().themeReducer.lightTheme.elements
             } 
         } else {
             return {
-                backgroundColor: store.getState().darkTheme.elements
+                backgroundColor: store.getState().themeReducer.darkTheme.elements
             }
         }
     }

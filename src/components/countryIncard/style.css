@@ -118,7 +118,7 @@ a {
         grid-template-columns: 48% 48%;
         width: 90%;
         margin: 40px 5%;
-        grid-row-gap: 10px;
+        grid-row-gap: 20px;
     }
     #region-filter {
         margin-left: 5%;
@@ -138,10 +138,11 @@ a {
 @media only screen and (min-width: 810px) {
     #cards {
         display: grid;
-        grid-template-columns: repeat(3, 32%);
+        grid-template-columns: repeat(3, 30%);
         width: 90%;
         margin: 40px 5%;
-        grid-row-gap: 10px;
+        grid-row-gap: 5vw;
+        column-gap: 5%;
     }
     .card {
         width: 100%;
@@ -152,10 +153,11 @@ a {
 @media only screen and (min-width: 910px) {
     #cards {
         display: grid;
-        grid-template-columns: repeat(3, 32%);
+        grid-template-columns: repeat(3, 26%);
         width: 90%;
         margin: 40px 5%;
-        grid-row-gap: 10px;
+        column-gap: 11%;
+        grid-row-gap: 5vw;
     }
     .card {
         width: 100%;
@@ -166,10 +168,11 @@ a {
 @media only screen and (min-width: 1220px) {
     #cards {
         display: grid;
-        grid-template-columns: repeat(4, 24%);
+        grid-template-columns: repeat(4, 21.2%);
         width: 90%;
         margin: 40px 5%;
-        grid-row-gap: 10px;
+        column-gap: 5%;
+        grid-row-gap: 2vw;
     }
     .card {
         max-width: 260px;
