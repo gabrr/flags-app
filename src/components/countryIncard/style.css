@@ -180,7 +180,7 @@ a {
         grid-row-gap: 2vw;
     }
     .card {
-        max-width: 260px;
+        max-width: 300px;
         width: 100%;
         margin: 10px 0;
     }
