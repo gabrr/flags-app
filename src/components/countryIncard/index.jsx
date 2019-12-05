@@ -19,14 +19,14 @@ class CountryInCards extends Component {
     }
 
     cardBackground() {
-        if(localStorage.theme === "light-theme") {
+        if(localStorage.theme === "dark-theme") {
+            return {
+                backgroundColor: store.getState().themeReducer.darkTheme.elements
+            }            
+        } else {
             return {
                 backgroundColor: store.getState().themeReducer.lightTheme.elements
             }
-        } else {
-            return {
-                backgroundColor: store.getState().themeReducer.darkTheme.elements
-            } 
         }
     }
 

@@ -102,16 +102,7 @@ class SearchInput extends Component {
     //setting the theme for the 
     inputTheme() {
         var any = document.getElementsByClassName("searchInput");
-        if(localStorage.theme === "light-theme"){
-            if(any[0]) {
-                any[0].className = "light-theme-holder searchInput";
-            }
-
-            return {
-                backgroundColor: store.getState().themeReducer.lightTheme.elements,
-                color: store.getState().themeReducer.lightTheme.text
-            }
-        } else { 
+        if(localStorage.theme === "dark-theme"){
             if(any[0]) {
                 any[0].className = "dark-theme-holder searchInput";
             }
@@ -120,14 +111,23 @@ class SearchInput extends Component {
                 backgroundColor: store.getState().themeReducer.darkTheme.elements,
                 color: store.getState().themeReducer.darkTheme.text
             }
+        } else { 
+            if(any[0]) {
+                any[0].className = "light-theme-holder searchInput";
+            }
+
+            return {
+                backgroundColor: store.getState().themeReducer.lightTheme.elements,
+                color: store.getState().themeReducer.lightTheme.text
+            }
         }
     }
 
     searchIconTheme() {
-        if(localStorage.theme === "light-theme"){
-            return store.getState().themeReducer.lightTheme.inputText
-        } else {
+        if(localStorage.theme === "dark-theme"){
             return store.getState().themeReducer.darkTheme.inputText
+        } else {
+            return store.getState().themeReducer.lightTheme.inputText
         }
     }
 

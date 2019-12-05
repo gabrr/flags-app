@@ -23,7 +23,7 @@ a {
 
 .card {
     animation: fading 2000ms ease-in-out;
-    transition: ease-in-out 200ms;
+    transition: transform ease-in-out 200ms;
     width: 90%;
     margin: 0 auto 35px;
     min-height: 300px;
