@@ -21,11 +21,13 @@
     width: 10px;
     right: 13%;
     top: 50%;
+    transition: ease-in-out 200ms transform;
     transform: translateY(-50%);
 }
 
 #region-filter {
     margin-bottom: 35px;
+    user-select: none;
 }
 
 @keyframes goingDown {

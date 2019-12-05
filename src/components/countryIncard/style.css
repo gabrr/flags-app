@@ -24,9 +24,9 @@ a {
 .card {
     animation: fading 2000ms ease-in-out;
     transition: transform ease-in-out 200ms;
-    width: 90%;
+    width: 100%;
     margin: 0 auto 35px;
-    min-height: 300px;
+    min-height: 320px;
     border-radius: 7px;
     display: grid;
     box-shadow: rgba(0, 0, 0, .2) 0 0 8px -2px;
@@ -42,7 +42,7 @@ a {
 
 .flags {
     width: 100%;
-    height: 136px;
+    height: 150px;
     object-fit: cover;
     border-radius: 7px 7px 0 0;
 }

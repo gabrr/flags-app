@@ -17,11 +17,17 @@
 #button-to-home p {
     font-size: 14px;
     margin-top: 11px;
+    margin-left: 20%;
 }
 
 #arrow-back {
-    width: 16%;
-    margin: 11px 10px 0 23%;
+    width: 40px;
+}
+
+#arrow-back svg {
+    width: 17px;
+    padding-left: 80%;
+    height: 40px;
 }
 
 #details-page img {
@@ -50,9 +56,6 @@
     #button-to-home {
         width: 190px;
     }
-    #arrow-back {
-        width: 19px;
-    }
     #details-page img {
         width: 120%;
         margin: 0;
@@ -80,5 +83,11 @@
     #details-page .countries-border-row {
         grid-column: span 2;
         margin-left: 10vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    #button-to-home {
+        width: 45vw;
     }
 }

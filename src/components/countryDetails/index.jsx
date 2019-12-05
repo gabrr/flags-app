@@ -17,7 +17,6 @@ export default function CountryDetails(props) {
         fetchCountries();
     }, [match.params.id]);
     
-    console.log(country)
     //formating the strings in a object, joining the values by comma
     const formsStrArray = (array) => {
         if(array) {
@@ -40,13 +39,20 @@ export default function CountryDetails(props) {
         }
     }
 
-    
+    const svgTheme = () => {
+        if(localStorage.theme === "dark-theme") {
+            return store.getState().themeReducer.darkTheme.text
+        } else {
+            return store.getState().themeReducer.lightTheme.text
+        }
+    }
+
     return (
         <div id={"details-page"}>
             <Link to={"/"}>
                 <div id={"button-to-home"} className={"square-element"} style={elementBackground()}>
                     <div id={"arrow-back"}>
-                        <svg viewBox={"0 0 30 30"}>
+                        <svg viewBox={"0 0 30 30"} fill={svgTheme()}>
                         <path d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554
 	c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587
 	c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"/>
