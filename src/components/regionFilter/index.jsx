@@ -24,10 +24,10 @@ class RegionFilter extends Component {
     }
     
     downArrowTheme() {
-        if(localStorage.theme === "light-theme") {
-            return downArrow;
-        } else {
+        if(localStorage.theme === "dark-theme") {
             return lightDownArrow;
+        } else {
+            return downArrow;
         }
     }
 
@@ -68,13 +68,13 @@ class RegionFilter extends Component {
     }
 
     btRegionTheme() {
-        if(localStorage.theme === "light-theme") {
-            return {
-                backgroundColor: store.getState().themeReducer.lightTheme.elements,
-            }
-        } else {
+        if(localStorage.theme === "dark-theme") {
             return {
                 backgroundColor: store.getState().themeReducer.darkTheme.elements
+            }            
+        } else {
+            return {
+                backgroundColor: store.getState().themeReducer.lightTheme.elements,
             }
         }
     }

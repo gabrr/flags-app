@@ -37,21 +37,21 @@ class Navbar extends Component {
     }
 
     navbarBackground() {
-        if(localStorage.theme === "light-theme") {
-            document.body.style.backgroundColor = store.getState().themeReducer.lightTheme.background
-            document.body.style.color = store.getState().themeReducer.lightTheme.text
-            return {
-                backgroundColor: store.getState().themeReducer.lightTheme.elements, 
-                transition: "background-color 200ms linear 20ms",
-                color: store.getState().themeReducer.lightTheme.text
-            }
-        } else {
+        if(localStorage.theme === "dark-theme") {
             document.body.style.backgroundColor = store.getState().themeReducer.darkTheme.background
             document.body.style.color = store.getState().themeReducer.darkTheme.text
             return {
                 backgroundColor: store.getState().themeReducer.darkTheme.elements, 
                 transition: "background-color 200ms linear 20ms",
                 color: store.getState().themeReducer.darkTheme.text
+            }            
+        } else {
+            document.body.style.backgroundColor = store.getState().themeReducer.lightTheme.background
+            document.body.style.color = store.getState().themeReducer.lightTheme.text
+            return {
+                backgroundColor: store.getState().themeReducer.lightTheme.elements, 
+                transition: "background-color 200ms linear 20ms",
+                color: store.getState().themeReducer.lightTheme.text
             }
         }
     }
