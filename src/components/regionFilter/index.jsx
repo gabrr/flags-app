@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import downArrow from "../../img/svg/down-arrow.svg"
-import lightDownArrow from "../../img/svg/light-down-arrow.svg"
 import "./style.css"
 import store from "../../store"
 
@@ -25,9 +24,9 @@ class RegionFilter extends Component {
     
     downArrowTheme() {
         if(localStorage.theme === "dark-theme") {
-            return lightDownArrow;
+            return store.getState().themeReducer.darkTheme.text;
         } else {
-            return downArrow;
+            return store.getState().themeReducer.lightTheme.text;
         }
     }
 
@@ -41,29 +40,23 @@ class RegionFilter extends Component {
                 buttonClicked: true,
             })
 
-            downArrowAnimated.animate([
-                // keyframes
-                { transform: 'translateY(-5%)' }, 
-                { transform: 'translateY(-50%)' }
-              ], { 
-                // timing options
-                duration: 200,
-              })
+            downArrowAnimated.style.transform = "translateY(-5%)";
+            setTimeout(() => {
+                downArrowAnimated.style.transform = "translateY(-50%)";
+            }, 200)
 
         } else {
             regionsCard.style.display = "none"
             this.setState({
                 buttonClicked: false,
             })
+        }
 
-            downArrowAnimated.animate([
-                // keyframes
-                { transform: 'translateY(-80%)' }, 
-                { transform: 'translateY(-50%)' }
-              ], { 
-                // timing options
-                duration: 200,
-              })
+        window.onscroll = () => {
+            regionsCard.style.display = "none"
+            this.setState({
+                buttonClicked: false,
+            })
         }
     }
 
@@ -83,10 +76,12 @@ class RegionFilter extends Component {
 
     render() {
         return (
-            <div id="region-filter">
-                <div id="show-regions-bt" onClick={this.showList} style={this.btRegionTheme()}>
+            <div onClick={this.showList} id="region-filter">
+                <div id="show-regions-bt" style={this.btRegionTheme()}>
                     <p>Filter by region</p>
-                    <img id={"down-arrow"} src={this.downArrowTheme()} alt={"down arrow"}/>
+                    <svg id={"down-arrow"} xmlns={"http://www.w3.org/2000/svg"} viewBox={"0 0 451.847 451.847"}>
+	                    <path d={"M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"} fill={this.downArrowTheme()}></path>
+                    </svg>
                 </div>
                 <ul id={"regions-list"} style={this.btRegionTheme()}>
                     {this.state.regions.map( x => {
