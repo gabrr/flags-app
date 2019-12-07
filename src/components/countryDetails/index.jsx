@@ -74,10 +74,13 @@ export default function CountryDetails(props) {
             <div className={"countries-border-row"}>
                 <span>Border countries:</span>
                 <ul>
-                    <li className={"square-element"}>Brazil</li>
-                    <li className={"square-element"}>Argentina</li>
-                    <li className={"square-element"}>Paraguay</li>
-                    <li className={"square-element"}>Paraguay</li>
+                    {
+                        countryChosen.borders.map(border => {
+                            return (
+                                <li className={"square-element"}>{border}</li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
         </div>
