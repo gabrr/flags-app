@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 class CountryInCards extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            isLoaded: false
+            countries: []
         }
     }
-
     numberWithCommas(x) {
         if(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -30,8 +30,17 @@ class CountryInCards extends Component {
         }
     }
 
+    componentDidMount() {
+        store.subscribe(() => {
+            this.setState({
+                countries: store.getState().fetcher.countries
+            })
+        })
+    }
+
+
     render() {
-        if(this.props.state.isLoaded === false) {
+        if(store.getState().fetcher.loading) {
             return (
                 <div id="loading">
                     <div className="circles">
@@ -42,7 +51,7 @@ class CountryInCards extends Component {
                 </div>
             )
             
-        } else if(this.props.state.countries[0].name === "none found") {
+        } else if(store.getState().fetcher.data === []) {
             return (
                 <div className={"nothingFound"}>
                     <h1>Please accept our apologies,<br/> We couldn't find a country named {this.props.state.countryName}. Try another one ;)</h1>
@@ -51,7 +60,7 @@ class CountryInCards extends Component {
         } else {
             return (
                     <div id="cards">
-                        {this.props.state.countries.map( country => {
+                        {store.getState().fetcher.countries.map( country => {
                             return (
                                 <Link key={country.demonym} to={`/${country.alpha3Code}`}>
                                     <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={country.name}>

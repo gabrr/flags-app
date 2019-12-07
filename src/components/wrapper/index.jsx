@@ -3,6 +3,7 @@ import Navbar from "../navbar";
 import SearchInput from "../searchInput";
 import "./style.css";
 import store from "../../store";
+import fetchData from "../../asyncActions/fetchCountries"
 import CountriesDetails from "../countryDetails"
 import {
     BrowserRouter as 
@@ -19,6 +20,10 @@ class Wrapper extends Component {
         this.setTheme = this.setTheme.bind(this);
     }
     
+    componentDidMount() {
+        store.dispatch(fetchData("region/americas"))
+    }
+
     setTheme() {
         store.dispatch({type: "THEME_MODE"});
         this.setState({
