@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useRouteMatch } from "react-router-dom";
+import React from 'react'
 import "./style.css";
-import { Link } from "react-router-dom";
 import store from "../../store";
-import axios from 'axios';
 
 export default function CountryDetails(props) {
-    const match = useRouteMatch("/:id")
-    const [country, setCountry] = useState([]);
 
-    useEffect(() => {
-        const fetchCountries = async () => {
-            const data = await axios(`https://restcountries.eu/rest/v2/alpha/${match.params.id}`, );
-            setCountry(data.data)
-        }
-        fetchCountries();
-    }, [match.params.id]);
+    const index = window.location.pathname.split("/")[2];
+    const countryChosen = store.getState().fetcher.countries[index]
     
     //formating the strings in a object, joining the values by comma
     const formsStrArray = (array) => {
@@ -39,6 +29,10 @@ export default function CountryDetails(props) {
         }
     }
 
+    const backToHome = () => {
+        window.history.back();
+    }
+
     const svgTheme = () => {
         if(localStorage.theme === "dark-theme") {
             return store.getState().themeReducer.darkTheme.text
@@ -49,8 +43,7 @@ export default function CountryDetails(props) {
 
     return (
         <div id={"details-page"}>
-            <Link to={"/"}>
-                <div id={"button-to-home"} className={"square-element"} style={elementBackground()}>
+                <div id={"button-to-home"} onClick={backToHome} className={"square-element"} style={elementBackground()}>
                     <div id={"arrow-back"}>
                         <svg viewBox={"0 0 30 30"} fill={svgTheme()}>
                         <path d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554
@@ -60,23 +53,22 @@ export default function CountryDetails(props) {
                     </div>
                     <p>Back</p>
                 </div>
-            </Link>
-            <img src={country.flag} alt={country.name}/>
+            <img src={countryChosen.flag} alt={countryChosen.name}/>
             <div className={"first-list"}>
-                <h1>{country.name}</h1>
+                <h1>{countryChosen.name}</h1>
                 <ul>
-                    <li><span>Native name:</span>{country.nativeName}</li>
-                    <li><span>Population:</span>{country.population}</li>
-                    <li><span>Region:</span> {country.region}</li>
-                    <li><span>Sub Region:</span> {country.subregion}</li>
-                    <li><span>Capital:</span> {country.capital}</li>
+                    <li><span>Native name:</span>{countryChosen.nativeName}</li>
+                    <li><span>Population:</span>{countryChosen.population}</li>
+                    <li><span>Region:</span> {countryChosen.region}</li>
+                    <li><span>Sub Region:</span> {countryChosen.subregion}</li>
+                    <li><span>Capital:</span> {countryChosen.capital}</li>
                 </ul>
             </div>
             <div className={"second-list"}>
                 <ul>
-                    <li><span>Top level domain:</span> {country.capital}</li>
-                    <li><span>Currencies:</span> {formsStrArray(country.currencies)}</li>
-                    <li><span>Languages:</span> {formsStrArray(country.languages)}</li>
+                    <li><span>Top level domain:</span> {countryChosen.capital}</li>
+                    <li><span>Currencies:</span> {formsStrArray(countryChosen.currencies)}</li>
+                    <li><span>Languages:</span> {formsStrArray(countryChosen.languages)}</li>
                 </ul>
             </div>  
             <div className={"countries-border-row"}>
