@@ -12,6 +12,7 @@
     height: 40px;
     margin: 35px auto;
     display: -webkit-inline-box;
+    cursor: pointer;
 }
 
 #button-to-home p {

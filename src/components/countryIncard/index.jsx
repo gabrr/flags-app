@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import store from "../../store";
+import countryIndex from "./../../actions/countryClicked"
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -8,9 +9,17 @@ class CountryInCards extends Component {
         super(props);
 
         this.state = {
-            countries: []
+            countries: [],
         }
+
+        this.key = 0;
+        this.generateKey = this.generateKey.bind(this)
     }
+
+    generateKey() {
+        this.key++;
+    }
+
     numberWithCommas(x) {
         if(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -38,6 +47,10 @@ class CountryInCards extends Component {
         })
     }
 
+    setIndex(event) {
+        console.log(event.taget)
+    }
+
 
     render() {
         if(store.getState().fetcher.loading) {
@@ -62,14 +75,14 @@ class CountryInCards extends Component {
                     <div id="cards">
                         {store.getState().fetcher.countries.map( country => {
                             return (
-                                <Link key={country.demonym} to={`/${country.alpha3Code}`}>
-                                    <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={country.name}>
-                                        <img className={"flags"} key={country.numericCode} src={country.flag} alt={"flag"}></img>
-                                        <h1 className={"country-name"} key={country.area}>{country.name}</h1>
-                                        <ul className={"countries-details"}>
-                                            <li><span>Population:</span> {this.numberWithCommas(country.population)}</li>
-                                            <li><span>Region:</span> {country.region}</li>
-                                            <li><span>Capital:</span> {country.capital}</li>
+                                <Link key={country.name + "link"} to={`/${country.name}/${store.getState().fetcher.countries.indexOf(country)}`}>
+                                    <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={this.generateKey()}>
+                                        <img key={this.generateKey()} className={"flags"} src={country.flag} alt={"flag"}></img>
+                                        <h1 className={"country-name"} key={this.generateKey()}>{country.name}</h1>
+                                        <ul key={this.generateKey()} className={"countries-details"}>
+                                            <li key={this.generateKey()}><span key={this.generateKey()}>Population:</span> {this.numberWithCommas(country.population)}</li>
+                                            <li key={this.generateKey()}><span key={this.generateKey()}>Region:</span> {country.region}</li>
+                                            <li key={this.generateKey()}><span key={this.generateKey()}>Capital:</span> {country.capital}</li>
                                         </ul>
                                     </div>
                                 </Link>

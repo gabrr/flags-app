@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import store from "../../store";
 import "./style.css";
 import fetchData from "../../asyncActions/fetchCountries"
-import CountryInCards from '../countryIncard';
 import RegionFilter from "../regionFilter";
 
 class SearchInput extends Component {
@@ -10,24 +9,10 @@ class SearchInput extends Component {
         super(props);
         this.state = {
             inputValue: "region/oceania",
-            theme: "light-theme",
-            countries: [],
-            isLoaded: false,
-            error: null,
-            countryName: ""
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.inputTheme = this.inputTheme.bind(this);
-        this.regionSetter = this.regionSetter.bind(this);
-        this.fetching = this.fetching.bind(this);
-    }
-
-    regionSetter(region) {
-        this.setState({
-            inputValue: `region/${region.target.innerHTML}`
-        });
-        this.fetching(`region/${region.target.innerHTML}`)
     }
 
     changeHandler(e) {
@@ -44,41 +29,10 @@ class SearchInput extends Component {
         
     }
     
-    //to get countries from API
-    fetching(query) {
-        this.setState({
-            isLoaded: false,
-        });
-        fetch(`https://restcountries.eu/rest/v2/${query}`)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                if(result.status) {
-                    this.setState({
-                        isLoaded: true,
-                        countries: [{name: "none found"}]
-                    });
-                } else {
-                    this.setState({
-                        isLoaded: true,
-                        countries: result
-                    });    
-                }
-            },
-            (error) => {
-                this.setState({
-                    isLoaded: true,
-                    error
-                });
-            }
-            )
-        }
-
-    
     
     //to load the data as soon as the component is loaded
     componentDidMount() {
-        store.dispatch(fetchData("region/americas"));
+        store.dispatch(fetchData(this.state.inputValue));
     }
 
     searchIconAnim() {
@@ -98,21 +52,12 @@ class SearchInput extends Component {
     
     //setting the theme for the 
     inputTheme() {
-        var any = document.getElementsByClassName("searchInput");
         if(localStorage.theme === "dark-theme"){
-            if(any[0]) {
-                any[0].className = "dark-theme-holder searchInput";
-            }
-
             return {
                 backgroundColor: store.getState().themeReducer.darkTheme.elements,
                 color: store.getState().themeReducer.darkTheme.text
             }
         } else { 
-            if(any[0]) {
-                any[0].className = "light-theme-holder searchInput";
-            }
-
             return {
                 backgroundColor: store.getState().themeReducer.lightTheme.elements,
                 color: store.getState().themeReducer.lightTheme.text
@@ -139,10 +84,7 @@ class SearchInput extends Component {
                             </svg>                        
                         <input style={this.inputTheme()} onChange={this.changeHandler} type={"search"} className={"searchInput"} placeholder={"Search for a country..."}></input>
                     </div>
-                    <RegionFilter state={this.state} region={this.regionSetter} />
-                    <div id="countries">
-                        <CountryInCards state={this.state} />
-                    </div>
+                    <RegionFilter region={this.regionSetter} />
             </form>    
         )
     }

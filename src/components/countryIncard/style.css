@@ -175,9 +175,14 @@ a {
         display: grid;
         grid-template-columns: repeat(4, 21.2%);
         width: 90%;
-        margin: 40px 5%;
+        max-width: 1350px;
+        margin: 141px 0;
+        grid-column-gap: 5%;
         column-gap: 5%;
         grid-row-gap: 2vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .card {
         max-width: 300px;

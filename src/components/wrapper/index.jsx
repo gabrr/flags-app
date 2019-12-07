@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from "../navbar";
 import SearchInput from "../searchInput";
+import CountryInCards from "../countryIncard"
 import "./style.css";
 import store from "../../store";
 import fetchData from "../../asyncActions/fetchCountries"
@@ -44,6 +45,7 @@ class Wrapper extends Component {
                 <Switch>
                     <Route exact path={"/"}>
                         <SearchInput />
+                        <CountryInCards />
                     </Route>
                     <Route path={"/:id"}>
                         <CountriesDetails />
