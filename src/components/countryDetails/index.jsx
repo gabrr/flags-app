@@ -16,6 +16,13 @@ export default function CountryDetails(props) {
         }
     }
 
+    const numberWithCommas = (x) => {
+        if(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }   
+        return null
+    }
+
     //toggling the background theme 
     const elementBackground = () => {
         if(localStorage.theme === "dark-theme") {
@@ -55,10 +62,10 @@ export default function CountryDetails(props) {
                 </div>
             <img src={countryChosen.flag} alt={countryChosen.name}/>
             <div className={"first-list"}>
-                <h1>{countryChosen.name}</h1>
+                <h1 onClick={console.log(store.getState().fetcher)}>{countryChosen.name}</h1>
                 <ul>
                     <li><span>Native name: </span>{countryChosen.nativeName}</li>
-                    <li><span>Population: </span>{countryChosen.population}</li>
+                    <li><span>Population: </span>{numberWithCommas(countryChosen.population)}</li>
                     <li><span>Region: </span> {countryChosen.region}</li>
                     <li><span>Sub Region: </span> {countryChosen.subregion}</li>
                     <li><span>Capital: </span> {countryChosen.capital}</li>
@@ -72,17 +79,36 @@ export default function CountryDetails(props) {
                 </ul>
             </div>  
             <div className={"countries-border-row"}>
+                <BorderCountry />                
+            </div>
+        </div>
+    )
+}
+
+const BorderCountry = () => {
+    const index = window.location.pathname.split("/")[2];
+    const countryChosen = store.getState().fetcher.countries[index]
+
+    if(countryChosen.borders.length > 0) {
+        return (
+            <React.Fragment>
                 <span>Border countries:</span>
-                <ul>
-                    {
+                    <ul>
+                        {
                         countryChosen.borders.map(border => {
                             return (
                                 <li className={"square-element"}>{border}</li>
                             )
                         })
-                    }
-                </ul>
-            </div>
-        </div>
-    )
+                        }
+                    </ul>
+            </React.Fragment>
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <span>No borders</span>
+            </React.Fragment>
+        )
+    }
 }
