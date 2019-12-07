@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import downArrow from "../../img/svg/down-arrow.svg"
 import "./style.css"
 import store from "../../store"
 

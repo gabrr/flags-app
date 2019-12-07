@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import store from "../../store";
 import "./style.css";
+import fetchData from "../../asyncActions/fetchCountries"
 import CountryInCards from '../countryIncard';
 import RegionFilter from "../regionFilter";
 
@@ -18,8 +19,8 @@ class SearchInput extends Component {
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
         this.inputTheme = this.inputTheme.bind(this);
-        this.fetching = this.fetching.bind(this);
         this.regionSetter = this.regionSetter.bind(this);
+        this.fetching = this.fetching.bind(this);
     }
 
     regionSetter(region) {
@@ -77,7 +78,7 @@ class SearchInput extends Component {
     
     //to load the data as soon as the component is loaded
     componentDidMount() {
-        this.fetching(this.state.inputValue);
+        store.dispatch(fetchData("region/americas"));
     }
 
     searchIconAnim() {
@@ -90,7 +91,7 @@ class SearchInput extends Component {
     
     //to load data on submitting the name searched
     submitting(event) {
-        this.fetching(this.state.inputValue);
+        store.dispatch(fetchData(this.state.inputValue));
         event.preventDefault();
         this.searchIconAnim();
     }
@@ -128,7 +129,8 @@ class SearchInput extends Component {
     }
 
 
-    render() {
+    render() {   
+        console.log(store.getState())
         return (
             <form id={"form"} onSubmit={this.submitting}>
                     <div style={this.inputTheme()} className={"outerInput"}>
@@ -138,7 +140,9 @@ class SearchInput extends Component {
                         <input style={this.inputTheme()} onChange={this.changeHandler} type={"search"} className={"searchInput"} placeholder={"Search for a country..."}></input>
                     </div>
                     <RegionFilter state={this.state} region={this.regionSetter} />
-                    <CountryInCards state={this.state} />
+                    <div id="countries">
+                        <CountryInCards state={this.state} />
+                    </div>
             </form>    
         )
     }
