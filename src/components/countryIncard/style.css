@@ -5,6 +5,7 @@
     margin: 40px 5%;
     row-gap: 20px;
     column-gap: 2%;
+    transition: left ease-in-out 300ms;
 }
 
 a {

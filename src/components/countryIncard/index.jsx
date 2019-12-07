@@ -51,7 +51,6 @@ class CountryInCards extends Component {
         console.log(event.taget)
     }
 
-
     render() {
         if(store.getState().fetcher.loading) {
             return (
