@@ -57,18 +57,18 @@ export default function CountryDetails(props) {
             <div className={"first-list"}>
                 <h1>{countryChosen.name}</h1>
                 <ul>
-                    <li><span>Native name:</span>{countryChosen.nativeName}</li>
-                    <li><span>Population:</span>{countryChosen.population}</li>
-                    <li><span>Region:</span> {countryChosen.region}</li>
-                    <li><span>Sub Region:</span> {countryChosen.subregion}</li>
-                    <li><span>Capital:</span> {countryChosen.capital}</li>
+                    <li><span>Native name: </span>{countryChosen.nativeName}</li>
+                    <li><span>Population: </span>{countryChosen.population}</li>
+                    <li><span>Region: </span> {countryChosen.region}</li>
+                    <li><span>Sub Region: </span> {countryChosen.subregion}</li>
+                    <li><span>Capital: </span> {countryChosen.capital}</li>
                 </ul>
             </div>
             <div className={"second-list"}>
                 <ul>
-                    <li><span>Top level domain:</span> {countryChosen.capital}</li>
-                    <li><span>Currencies:</span> {formsStrArray(countryChosen.currencies)}</li>
-                    <li><span>Languages:</span> {formsStrArray(countryChosen.languages)}</li>
+                    <li><span>Top level domain: </span> {countryChosen.capital}</li>
+                    <li><span>Currencies: </span> {formsStrArray(countryChosen.currencies)}</li>
+                    <li><span>Languages: </span> {formsStrArray(countryChosen.languages)}</li>
                 </ul>
             </div>  
             <div className={"countries-border-row"}>
