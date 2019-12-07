@@ -20,9 +20,9 @@ class Wrapper extends Component {
         }
         this.setTheme = this.setTheme.bind(this);
     }
-    
+    //to load the data as soon as the component is loaded
     componentDidMount() {
-        store.dispatch(fetchData("region/americas"))
+        store.dispatch(fetchData("region/americas"));
     }
 
     setTheme() {

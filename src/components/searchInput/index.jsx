@@ -8,7 +8,7 @@ class SearchInput extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputValue: "region/oceania",
+            inputValue: "region/americas",
         }
         this.changeHandler = this.changeHandler.bind(this);
         this.submitting = this.submitting.bind(this);
@@ -28,13 +28,7 @@ class SearchInput extends Component {
         }
         
     }
-    
-    
-    //to load the data as soon as the component is loaded
-    componentDidMount() {
-        store.dispatch(fetchData(this.state.inputValue));
-    }
-
+        
     searchIconAnim() {
         let SearchIconElem = document.getElementsByClassName("searchIcon")[0];
         SearchIconElem.style.transform = "translate(12px, -4px) scale(1.3)";
@@ -75,7 +69,6 @@ class SearchInput extends Component {
 
 
     render() {   
-        console.log(store.getState())
         return (
             <form id={"form"} onSubmit={this.submitting}>
                     <div style={this.inputTheme()} className={"outerInput"}>
