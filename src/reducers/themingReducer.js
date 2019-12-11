@@ -22,8 +22,6 @@ export default function themeReducer(state = INITIAL_STATE, action) {
             } else {
                 return {...state, theming: "light-theme" };
             }
-        case "COUNTRY_SEARCHED":
-            return {...state, countrySearched: action.searched };
         default:
             return state;
     }

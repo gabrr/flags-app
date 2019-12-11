@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./style.css"
 import store from "../../store"
+import fetchData from "../../asyncActions/fetchCountries";
 
 
 class RegionFilter extends Component {
@@ -19,6 +20,7 @@ class RegionFilter extends Component {
         }
 
         this.showList = this.showList.bind(this)
+        this.setRegion = this.setRegion.bind(this)
     }
     
     downArrowTheme() {
@@ -27,6 +29,10 @@ class RegionFilter extends Component {
         } else {
             return store.getState().themeReducer.lightTheme.text;
         }
+    }
+
+    setRegion(e) {
+        store.dispatch(fetchData(`region/${e.target.innerHTML}`));
     }
 
     showList() {
@@ -84,7 +90,7 @@ class RegionFilter extends Component {
                 </div>
                 <ul id={"regions-list"} style={this.btRegionTheme()}>
                     {this.state.regions.map( x => {
-                        return <li onClick={this.props.region} key={x}>{x}</li>
+                        return <li onClick={this.setRegion} key={x}>{x}</li>
                     })}
                 </ul>
             </div>

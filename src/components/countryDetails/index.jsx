@@ -2,10 +2,11 @@ import React from 'react'
 import "./style.css";
 import store from "../../store";
 
+
 export default function CountryDetails(props) {
 
     const index = window.location.pathname.split("/")[2];
-    const countryChosen = store.getState().fetcher.countries[index]
+    const countryChosen = store.getState().fetcher.querySearched[index]
     
     //formating the strings in a object, joining the values by comma
     const formsStrArray = (array) => {
@@ -15,7 +16,7 @@ export default function CountryDetails(props) {
             return string
         }
     }
-
+    //putting commas for numbers
     const numberWithCommas = (x) => {
         if(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -62,7 +63,7 @@ export default function CountryDetails(props) {
                 </div>
             <img src={countryChosen.flag} alt={countryChosen.name}/>
             <div className={"first-list"}>
-                <h1 onClick={console.log(store.getState().fetcher)}>{countryChosen.name}</h1>
+                <h1>{countryChosen.name}</h1>
                 <ul>
                     <li><span>Native name: </span>{countryChosen.nativeName}</li>
                     <li><span>Population: </span>{numberWithCommas(countryChosen.population)}</li>
@@ -87,21 +88,45 @@ export default function CountryDetails(props) {
 
 const BorderCountry = () => {
     const index = window.location.pathname.split("/")[2];
-    const countryChosen = store.getState().fetcher.countries[index]
+    const countryChosen = store.getState().fetcher.querySearched[index]
+    const regionCountries = store.getState().fetcher.countries;
+    
+    // key generator
+    var key = 0;
+    function generateKey() {
+        return key++;
+    }
 
+    // certifying that the country chose has borders
     if(countryChosen.borders.length > 0) {
+
+        // if it does, gets its borders values
+        const borders = countryChosen.borders.map(border => border);
+        var names = [];
+
+        // by the region gets its names and store them in array names, because the borders names are in alpha 3 code.
+        for(let i = 0; i < regionCountries.length; i++) {
+            for(let b = 0; b < borders.length; b++) {
+                if(borders[b] === regionCountries[i].alpha3Code) {
+                    names.push(regionCountries[i].nativeName); 
+                }
+            }
+        }
+
+        console.log(store.getState())
+
         return (
             <React.Fragment>
                 <span>Border countries:</span>
-                    <ul>
-                        {
-                        countryChosen.borders.map(border => {
-                            return (
-                                <li className={"square-element"}>{border}</li>
-                            )
-                        })
-                        }
-                    </ul>
+                <ul>
+                    {
+                    names.map(border => {
+                        return (
+                            <li key={`border${generateKey()}`} className={"square-element"}>{border}</li>
+                        )
+                    })
+                    }
+                </ul>
             </React.Fragment>
         )
     } else {

@@ -3,6 +3,7 @@ import store from "../../store";
 import "./style.css";
 import fetchData from "../../asyncActions/fetchCountries"
 import RegionFilter from "../regionFilter";
+import searchInput from "../../actions/searchInput";
 
 class SearchInput extends Component {
     constructor(props) {
@@ -17,14 +18,9 @@ class SearchInput extends Component {
 
     changeHandler(e) {
         if(e.target.value === "") {
-            this.setState({
-                inputValue: `region/americas`
-            })    
+            store.dispatch(searchInput("region/americas"))   
         } else {
-            this.setState({
-                inputValue: `name/${e.target.value}`,
-                countryName: e.target.value
-            })
+            store.dispatch(searchInput(e.target.value))
         }
         
     }
@@ -39,7 +35,7 @@ class SearchInput extends Component {
     
     //to load data on submitting the name searched
     submitting(event) {
-        store.dispatch(fetchData(this.state.inputValue));
+        store.dispatch(fetchData(`name/${store.getState().countrySearched.search}`));
         event.preventDefault();
         this.searchIconAnim();
     }
@@ -77,7 +73,7 @@ class SearchInput extends Component {
                             </svg>                        
                         <input style={this.inputTheme()} onChange={this.changeHandler} type={"search"} className={"searchInput"} placeholder={"Search for a country..."}></input>
                     </div>
-                    <RegionFilter region={this.regionSetter} />
+                    <RegionFilter />
             </form>    
         )
     }

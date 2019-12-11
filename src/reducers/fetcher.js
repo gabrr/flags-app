@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
     countries: {},
+    querySearched: [],
     loading: true,
     error: null
 }
@@ -10,7 +11,9 @@ export default function Fetcher(state = INITIAL_STATE, action) {
         case "FETCH_COUNTRIES":
             return {...state, countries: [...action.countries], loading: false };
         case "ERROR_FETCHING":
-            return {...state, error: action.err }
+            return {...state, error: action.err };
+        case "QUERY_SEARCHED":
+            return {...state, querySearched: action.query }
         default:
             return state;
 
