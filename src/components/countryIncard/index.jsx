@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import store from "../../store";
-import countryIndex from "./../../actions/countryClicked"
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -42,7 +41,7 @@ class CountryInCards extends Component {
     componentDidMount() {
         store.subscribe(() => {
             this.setState({
-                countries: store.getState().fetcher.countries
+                countries: 1 + 1
             })
         })
     }
@@ -63,18 +62,18 @@ class CountryInCards extends Component {
                 </div>
             )
             
-        } else if(store.getState().fetcher.data === []) {
+        } else if(store.getState().fetcher.error) {
             return (
                 <div className={"nothingFound"}>
-                    <h1>Please accept our apologies,<br/> We couldn't find a country named {this.props.state.countryName}. Try another one ;)</h1>
+                    <h1>Please accept our apologies,<br/> We couldn't find a country named {store.getState().countrySearched.search}. Try another one ;)</h1>
                 </div>
             )
         } else {
             return (
                     <div id="cards">
-                        {store.getState().fetcher.countries.map( country => {
+                        {store.getState().fetcher.querySearched.map( country => {
                             return (
-                                <Link key={country.name + "link"} to={`/${country.name}/${store.getState().fetcher.countries.indexOf(country)}`}>
+                                <Link key={country.name + "link"} to={`/${country.name}/${store.getState().fetcher.querySearched.indexOf(country)}`}>
                                     <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={this.generateKey()}>
                                         <img key={this.generateKey()} className={"flags"} src={country.flag} alt={"flag"}></img>
                                         <h1 className={"country-name"} key={this.generateKey()}>{country.name}</h1>

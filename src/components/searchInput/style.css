@@ -38,12 +38,12 @@
     padding-top: 16px;
 }
 
-input.searchInput.light-theme-holder::placeholder {
+input.searchInput.light-theme::placeholder {
     color: hsl(0, 0%, 52%);
     font-weight: 300;
 }
 
-input.searchInput.dark-theme-holder::placeholder {
+input.searchInput.dark-theme::placeholder {
     color: hsl(0, 0%, 100%);
     font-weight: 300;
 }

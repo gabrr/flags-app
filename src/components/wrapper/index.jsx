@@ -23,6 +23,7 @@ class Wrapper extends Component {
     //to load the data as soon as the component is loaded
     componentDidMount() {
         store.dispatch(fetchData("region/americas"));
+        store.dispatch(fetchData("all"));
     }
 
     setTheme() {
