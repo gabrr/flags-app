@@ -62,7 +62,7 @@ class CountryInCards extends Component {
                 </div>
             )
             
-        } else if(store.getState().fetcher.querySearched.length <= 0) {
+        } else if(store.getState().fetcher.error) {
             return (
                 <div className={"nothingFound"}>
                     <h1>Please accept our apologies,<br/> We couldn't find a country named {store.getState().countrySearched.search}. Try another one ;)</h1>
@@ -75,7 +75,7 @@ class CountryInCards extends Component {
                             return (
                                 <Link key={country.name + "link"} to={`/${country.name}/${store.getState().fetcher.querySearched.indexOf(country)}`}>
                                     <div style={this.cardBackground()} className="card" id={`card-${country.alpha3Code}`} key={this.generateKey()}>
-                                        <img key={this.generateKey()} loading={"lazy"} className={"flags"} src={country.flag} alt={"flag"}></img>
+                                        <img key={this.generateKey()} className={"flags"} src={country.flag} alt={"flag"}></img>
                                         <h1 className={"country-name"} key={this.generateKey()}>{country.name}</h1>
                                         <ul key={this.generateKey()} className={"countries-details"}>
                                             <li key={this.generateKey()}><span key={this.generateKey()}>Population:</span> {this.numberWithCommas(country.population)}</li>
